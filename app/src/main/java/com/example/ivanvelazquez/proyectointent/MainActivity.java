@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void apretarBoton(View view){
         String mensaje = "mensaje test";
-
+        Intent actboton = new Intent(this, ActBotoneada.class);
+        actboton.putExtra("mensajeEntrada",mensaje);
+        startActivity(actboton);
     }
 }
