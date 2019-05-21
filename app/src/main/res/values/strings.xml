@@ -4,5 +4,5 @@
     <string name="EnHolaMundo">Hello world</string>
     <string name="EsHolaMundo">Hola Mundo</string>
     <string name="descripcionImagen">dependiendo del layout, cambia imagen</string>
-
+    <string name="TextViewDefault">Contenido Default</string>
 </resources>
