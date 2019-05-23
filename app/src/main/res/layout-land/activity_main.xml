@@ -10,7 +10,7 @@
         android:id="@+id/tvHolaMundo"
         android:layout_width="246dp"
         android:layout_height="39dp"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="4dp"
         android:text="@string/EsHolaMundo"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,14 +19,19 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="244dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="0dp"
+        android:layout_height="165dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/descripcionImagen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:srcCompat="@drawable/globallogic" />
+        app:srcCompat="@drawable/globallogic2" />
 
     <Button
         android:id="@+id/button"
@@ -34,13 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:onClick="apretarBoton"
         android:text="@string/ir_a_la_otra_act"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHolaMundo" />
 
