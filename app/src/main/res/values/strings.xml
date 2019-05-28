@@ -12,5 +12,6 @@
     <string name="esFemenino">Femenino</string>
     <string name="incorrecto">User or Password incorrect</string>
     <string name="bienvenidosr">Bienvenido Señor %s</string>
-    <string name="bienvenidasra">Bienvenida Sra</string>
+    <string name="bienvenidasra">Bienvenida Sra %s</string>
+    <string name="bienvenidoDefault">Hola %s</string>
     </resources>

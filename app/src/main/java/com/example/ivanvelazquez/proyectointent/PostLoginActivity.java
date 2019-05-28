@@ -31,10 +31,10 @@ public class PostLoginActivity extends AppCompatActivity {
         }
         else if (opcion==2){
 
-            tvSaludo.setText("bienvenida sra: "+usr);
+            tvSaludo.setText(String.format(getString(R.string.bienvenidasra),usr));
         }
         else{
-            tvSaludo.setText("Hola "+usr);
+            tvSaludo.setText(String.format(getString(R.string.bienvenidoDefault),usr));
         }
 
     }
