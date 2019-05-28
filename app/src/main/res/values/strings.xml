@@ -11,6 +11,10 @@
     <string name="esMasculino">Masculino</string>
     <string name="esFemenino">Femenino</string>
     <string name="incorrecto">User or Password incorrect</string>
+
+    <!-- No logre usar luego de que logue en la actv. del zoo
     <string name="bienvenidosr">Bienvenido Señor</string>
     <string name="bienvenidasra">Bienvenida Sra</string>
-</resources>
+    -->
+
+    </resources>

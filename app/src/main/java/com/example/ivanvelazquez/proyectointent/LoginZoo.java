@@ -16,7 +16,7 @@ public class LoginZoo extends AppCompatActivity {
     private RadioGroup rgSexo;
     private RadioButton rbMasculino;
     private RadioButton rbFemenino;
-    private int opcion;
+    private int opcion=3;
     private String usr,psw;
     private EditText user;
     private EditText password;
