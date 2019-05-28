@@ -24,10 +24,10 @@ public class PostLoginActivity extends AppCompatActivity {
         saludar();
     }
     public void saludar(){
-        
+
         if(opcion==1){
 
-            tvSaludo.setText("Bienvenido sr: "+usr);
+            tvSaludo.setText(String.format(getString(R.string.bienvenidosr),usr));
         }
         else if (opcion==2){
 
@@ -37,5 +37,8 @@ public class PostLoginActivity extends AppCompatActivity {
             tvSaludo.setText("Hola "+usr);
         }
 
+    }
+    public void logOut(View view){
+        this.finish();
     }
 }
