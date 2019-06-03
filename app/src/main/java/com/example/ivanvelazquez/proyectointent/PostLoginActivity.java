@@ -8,35 +8,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRAMENSAJE;
+import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRAUSUARIO;
+
 public class PostLoginActivity extends AppCompatActivity {
     private TextView tvSaludo;
-    int opcion;
+    String opcion;
     String usr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_login);
         Bundle bundle = getIntent().getExtras();
-        opcion = bundle.getInt("EXTRAOPCION");
-         usr = bundle.getString("EXTRAUSUARIO");
+        opcion = bundle.getString(EXTRAMENSAJE);
+         usr = bundle.getString(EXTRAUSUARIO);
         Log.i("DATOSRECIBIDOS",usr+opcion);
         this.tvSaludo = (TextView)findViewById(R.id.tvSaludo);
         saludar();
     }
     public void saludar(){
-
-        if(opcion==1){
-
-            tvSaludo.setText(String.format(getString(R.string.bienvenidosr),usr));
-        }
-        else if (opcion==2){
-
-            tvSaludo.setText(String.format(getString(R.string.bienvenidasra),usr));
-        }
-        else{
-            tvSaludo.setText(String.format(getString(R.string.bienvenidoDefault),usr));
-        }
-
+            tvSaludo.setText(String.format(opcion+usr));
     }
     public void logOut(View view){
         this.finish();

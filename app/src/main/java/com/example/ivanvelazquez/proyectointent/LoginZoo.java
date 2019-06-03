@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 public class LoginZoo extends AppCompatActivity {
 
+    private static final String USRDEF = "GL", PASSDEF = "Android";
+    public static final String EXTRAMENSAJE="mensaje bienvenida", EXTRAUSUARIO="Usuario";
     private RadioGroup rgSexo;
     private RadioButton rbMasculino;
     private RadioButton rbFemenino;
-    private int opcion=3;
+    private String opcion = "Hola: ";
     private String usr,psw;
     private EditText user;
     private EditText password;
@@ -41,25 +43,27 @@ public class LoginZoo extends AppCompatActivity {
         rbMasculino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion=1;
+                opcion="Bienvenido Señor: ";
+
             }
         });
         rbFemenino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion=2;
+                opcion="Bienvenida Señora: ";
+
             }
         });
     }
     public void loguear(View view){
         usr = user.getText().toString();
         psw = password.getText().toString();
-        Log.i("INGRESANDO-USUERIO",usr+" "+psw);
-        if(usr.equals("GL") && psw.equals("Android")){
+        Log.i("INGRESANDO-USUARIO",usr+" "+psw);
+        if(usr.equals(USRDEF) && psw.equals(PASSDEF)){
 
             Intent postLog = new Intent(this, PostLoginActivity.class);
-            postLog.putExtra("EXTRAOPCION",opcion);
-            postLog.putExtra("EXTRAUSUARIO",usr);
+            postLog.putExtra(EXTRAMENSAJE,opcion);
+            postLog.putExtra(EXTRAUSUARIO,usr);
             Log.i("LOG-INFO","se inicia la actividad postLogueo, la opcion seleccionada de genero es: "+opcion +" usuario: "+usr);
             startActivity(postLog);
 
