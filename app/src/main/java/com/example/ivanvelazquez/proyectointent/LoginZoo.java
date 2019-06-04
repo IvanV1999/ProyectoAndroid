@@ -61,7 +61,7 @@ public class LoginZoo extends AppCompatActivity {
         Log.i("INGRESANDO-USUARIO",usr+" "+psw);
         if(usr.equals(USRDEF) && psw.equals(PASSDEF)){
 
-            Intent postLog = new Intent(this, PostLoginActivity.class);
+            Intent postLog = new Intent(this, ZooAnimales.class);
             postLog.putExtra(EXTRAMENSAJE,opcion);
             postLog.putExtra(EXTRAUSUARIO,usr);
             Log.i("LOG-INFO","se inicia la actividad postLogueo, la opcion seleccionada de genero es: "+opcion +" usuario: "+usr);
