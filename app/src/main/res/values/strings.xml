@@ -14,8 +14,5 @@
     <string name="bienvenidosr">Bienvenido Señor %s</string>
     <string name="bienvenidasra">Bienvenida Sra %s</string>
     <string name="bienvenidoDefault">Hola %s</string>
-    <string name="welcomeSr">Welcome Sr: %s</string>
-    <string name="welcomeMs">Welcome Miss: %s</string>
-    <string name="hello">Hello: %s</string>
     <string name="test">Test</string>
 </resources>

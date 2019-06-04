@@ -56,7 +56,7 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
     }
 
     public void saludar() {
-        tvBienvenida.setText(String.format(opcion,usr));
+        tvBienvenida.setText(String.format(opcion + usr));
     }
 
     @Override
