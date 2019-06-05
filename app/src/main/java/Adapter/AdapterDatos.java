@@ -1,6 +1,6 @@
 package Adapter;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,13 +13,12 @@ import com.example.ivanvelazquez.proyectointent.Animal;
 import com.example.ivanvelazquez.proyectointent.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> {
 
-    private static ArrayList<Animal>  animales;
+    private static ArrayList<Animal> animales;
     private AnimalListener animalListener;
-    private static  ArrayList<String> especies;
+    private static ArrayList<String> especies;
 
     public AdapterDatos(ArrayList<Animal> animales, AnimalListener animalListener) {
         this.animales = animales;
@@ -29,7 +28,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list,null,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, null, false);
         return new ViewHolder(view);
 
     }
@@ -53,17 +52,19 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
 
 
-        public ViewHolder(@NonNull View itemView){
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nombre = itemView.findViewById(R.id.tvTexto);
             imagen = itemView.findViewById(R.id.ImgAnimal);
 
 
+
+
         }
 
         public void asignarDatos(Animal s) {
-            nombre.setText(s.getNombre()+" | "+s.getEspecie());
+            nombre.setText(s.getNombre() + " | " + s.getEspecie());
             imagen.setImageResource(s.getImagen());
             animal = s;
             itemView.setOnClickListener(this);
@@ -79,7 +80,8 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
     }
 
-    public interface AnimalListener{
+    public interface AnimalListener {
         void onClick(Animal animal);
     }
+
 }

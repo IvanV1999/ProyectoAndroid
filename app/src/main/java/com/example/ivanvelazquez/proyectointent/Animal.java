@@ -19,13 +19,14 @@ public class Animal implements Serializable {
         this.foto = foto;
         this.colorFondo = colorFondo;
     }
+
     public Animal(String nombre, int imagen, String especie, String info, int foto) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.especie = especie;
         this.info = info;
         this.foto = foto;
-        this.colorFondo =255;
+        this.colorFondo = 255;
     }
 
     public int getColorFondo() {

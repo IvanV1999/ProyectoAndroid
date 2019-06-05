@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
+
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
         android:layout_toLeftOf="@id/flecha">
 
         <ImageView
@@ -18,27 +18,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            tools:src="@drawable/gallina"/>
+            tools:src="@drawable/gallina" />
+
         <TextView
 
-            android:gravity="center"
-            android:textSize="18dp"
             android:id="@+id/tvTexto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            tools:text="gallina"/>
+            android:gravity="center"
+            android:textSize="18dp"
+            tools:text="gallina" />
 
     </LinearLayout>
 
     <ImageView
-        android:layout_marginTop="10dp"
         android:id="@+id/flecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:src="@drawable/arrow" />
-
 
 
 </RelativeLayout>

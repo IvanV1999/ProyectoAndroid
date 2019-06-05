@@ -1,9 +1,7 @@
 package com.example.ivanvelazquez.proyectointent;
 
-import android.content.res.Resources;
-import android.support.annotation.StringDef;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
