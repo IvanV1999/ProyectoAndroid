@@ -3,6 +3,16 @@
     <string name="ir_a_la_otra_act">Ir a la otra act</string>
     <string name="EnHolaMundo">Hello world</string>
     <string name="EsHolaMundo">Hola Mundo</string>
-    <string name="descripcionImagen">dependiendo del layout, cambia imagen</string>
+    <string name="descripcionImagen">una imagen</string>
     <string name="TextViewDefault">Contenido Default</string>
+    <string name="textUser">User</string>
+    <string name="textContraseña">password</string>
+    <string name="loguear">Sign in</string>
+    <string name="esMasculino">Masculino</string>
+    <string name="esFemenino">Femenino</string>
+    <string name="incorrecto">User or Password incorrect</string>
+    <string name="bienvenidosr">Bienvenido Señor %s</string>
+    <string name="bienvenidasra">Bienvenida Sra %s</string>
+    <string name="bienvenidoDefault">Hola %s</string>
+    <string name="test">Test</string>
 </resources>
