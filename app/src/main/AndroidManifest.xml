@@ -21,7 +21,8 @@
         <activity android:name=".PostLoginActivity" />
         <activity android:name=".ZooAnimales" />
         <activity android:name=".InfoActivity" />
-        <activity android:name=".InfoActiity"></activity>
+        <activity android:name=".InfoActiity" />
+        <activity android:name=".webActivity"></activity>
     </application>
 
 </manifest>

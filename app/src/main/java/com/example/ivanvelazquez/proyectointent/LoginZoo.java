@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
 
 
 public class LoginZoo extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class LoginZoo extends AppCompatActivity {
     private EditText user;
     private EditText password;
     private TextView result;
+    private String idioma = Locale.getDefault().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +43,29 @@ public class LoginZoo extends AppCompatActivity {
         rgSexo = (RadioGroup) findViewById(R.id.rgOpciones);
         rbMasculino = (RadioButton) findViewById(R.id.masculino);
         rbFemenino = (RadioButton) findViewById(R.id.femenino);
+        if (idioma.equals("en_US")) {
+            opcion = (String) getResources().getText(R.string.hi);
+        }
 
         rbMasculino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion = "Bienvenido Señor: ";
+                if (idioma.equals("en_US")) {
+                    opcion = (String) getResources().getText(R.string.welcomeSr);
+                } else {
+                    opcion = (String) getResources().getText(R.string.bienvenidosr);
+                }
 
             }
         });
         rbFemenino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion = "Bienvenida Señora: ";
+                if (idioma.equals("en_US")) {
+                    opcion = (String) getResources().getText(R.string.welcomeMiss);
+                } else {
+                    opcion = (String) getResources().getText(R.string.bienvenidasra);
+                }
 
             }
         });

@@ -13,6 +13,11 @@
     <string name="incorrecto">User or Password incorrect</string>
     <string name="bienvenidosr">Bienvenido Señor %s</string>
     <string name="bienvenidasra">Bienvenida Sra %s</string>
+    <string name="welcomeSr">Welcome Sr: %s</string>
+    <string name="welcomeMiss">Welome Ms: %s</string>
     <string name="bienvenidoDefault">Hola %s</string>
+    <string name="hi">Hi: %s</string>
     <string name="test">Test</string>
+    <string name="regresar">regresar</string>
+    <string name="back">back</string>
 </resources>
