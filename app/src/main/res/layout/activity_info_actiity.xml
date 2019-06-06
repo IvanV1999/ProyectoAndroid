@@ -89,13 +89,15 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="regresar"
-                    tools:text="regresar"/>
+                    android:text="@string/regresar"/>
 
                 <Button
+                    android:id="@+id/btnMasInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    tools:text="Mas Info"/>
+                    android:text="@string/masInfo"
+                    android:onClick="mostrarMasInfo"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

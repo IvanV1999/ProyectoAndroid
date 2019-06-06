@@ -9,15 +9,25 @@ public class Animal implements Serializable {
     private String info;
     private int foto;
     private int colorFondo;
+    private String url;
 
 
-    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo) {
+    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo, String url) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.especie = especie;
         this.info = info;
         this.foto = foto;
         this.colorFondo = colorFondo;
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Animal(String nombre, int imagen, String especie, String info, int foto) {

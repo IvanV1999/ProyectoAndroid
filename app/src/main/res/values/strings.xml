@@ -20,4 +20,6 @@
     <string name="test">Test</string>
     <string name="regresar">regresar</string>
     <string name="back">back</string>
+    <string name="masInfo">mas Info</string>
+    <string name="moreInfo">more info</string>
 </resources>
