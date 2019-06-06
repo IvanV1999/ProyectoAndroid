@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRAANIMAL;
 
-public class InfoActiity extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {
 
     public static final String LINK= "link de mayor informacion";
     private Animal animal;

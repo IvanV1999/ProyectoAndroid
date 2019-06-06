@@ -62,7 +62,7 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
     @Override
     public void onClick(Animal animal) {
 
-        Intent intentDatos = new Intent(this, InfoActiity.class);
+        Intent intentDatos = new Intent(this, InfoActivity.class);
         intentDatos.putExtra(EXTRAANIMAL, animal);
         startActivity(intentDatos);
 

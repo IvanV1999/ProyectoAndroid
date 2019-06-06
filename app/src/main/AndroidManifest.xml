@@ -16,11 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActBotoneada" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".PostLoginActivity" />
         <activity android:name=".ZooAnimales" />
-        <activity android:name=".InfoActiity" />
+        <activity android:name=".InfoActivity" />
         <activity android:name=".webActivity"></activity>
     </application>
 

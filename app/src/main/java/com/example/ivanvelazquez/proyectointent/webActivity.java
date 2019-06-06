@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import static com.example.ivanvelazquez.proyectointent.InfoActiity.LINK;
+import static com.example.ivanvelazquez.proyectointent.InfoActivity.LINK;
 
 public class webActivity extends AppCompatActivity {
 
