@@ -17,7 +17,7 @@ import java.util.Locale;
 public class LoginZoo extends AppCompatActivity {
 
     private static final String USRDEF = "GL", PASSDEF = "Android";
-    public static final String EXTRAMENSAJE = "mensaje bienvenida", EXTRAUSUARIO = "Usuario";
+    public static final String EXTRA_MENSAJE = "EXTRA_MENSAJE", EXTRA_USUARIO = "EXTRA_USUARIO";
     private RadioGroup rgSexo;
     private RadioButton rbMasculino;
     private RadioButton rbFemenino;
@@ -78,8 +78,8 @@ public class LoginZoo extends AppCompatActivity {
         if (usr.equals(USRDEF) && psw.equals(PASSDEF)) {
 
             Intent postLog = new Intent(this, ZooAnimales.class);
-            postLog.putExtra(EXTRAMENSAJE, opcion);
-            postLog.putExtra(EXTRAUSUARIO, usr);
+            postLog.putExtra(EXTRA_MENSAJE, opcion);
+            postLog.putExtra(EXTRA_USUARIO, usr);
             Log.i("LOG-INFO", "se inicia la actividad postLogueo, la opcion seleccionada de genero es: " + opcion + " usuario: " + usr);
             startActivity(postLog);
 

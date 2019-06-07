@@ -1,6 +1,6 @@
 package Adapter;
 
-import android.content.Context;
+
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
     private static ArrayList<Animal> animales;
     private AnimalListener animalListener;
-    private static ArrayList<String> especies;
+
 
     public AdapterDatos(ArrayList<Animal> animales, AnimalListener animalListener) {
         this.animales = animales;

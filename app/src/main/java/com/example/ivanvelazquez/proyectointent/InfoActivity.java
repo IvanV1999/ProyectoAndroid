@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRAANIMAL;
+import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRA_ANIMAL;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class InfoActivity extends AppCompatActivity {
         foto = findViewById(R.id.ivFoto);
         regresar = findViewById(R.id.btnRegresar);
         nombre = findViewById(R.id.tvNombre);
-        animal = (Animal) bundle.get(EXTRAANIMAL);
+        animal = (Animal) bundle.get(EXTRA_ANIMAL);
         especie.setText("Especie: " + animal.getEspecie());
         info.setText("Descripcion: \n" + animal.getInfo());
         foto.setImageResource(animal.getFoto());

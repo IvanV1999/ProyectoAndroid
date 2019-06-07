@@ -13,8 +13,8 @@ import java.util.Random;
 
 import Adapter.AdapterDatos;
 
-import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRAMENSAJE;
-import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRAUSUARIO;
+import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_MENSAJE;
+import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_USUARIO;
 
 
 public class ZooAnimales extends AppCompatActivity implements AdapterDatos.AnimalListener {
@@ -24,15 +24,15 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
     private TextView tvBienvenida;
     private String opcion;
     private String usr;
-    public static final String EXTRAANIMAL = "se envia animal";
+    public static final String EXTRA_ANIMAL = "EXTRA_ANIMAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo_animales);
         Bundle bundle = getIntent().getExtras();
-        opcion = bundle.getString(EXTRAMENSAJE);
-        usr = bundle.getString(EXTRAUSUARIO);
+        opcion = bundle.getString(EXTRA_MENSAJE);
+        usr = bundle.getString(EXTRA_USUARIO);
         tvBienvenida = (TextView) findViewById(R.id.tvBienvenido);
         saludar();
         mRecyclerView = (RecyclerView) findViewById(R.id.IdRecycler);
@@ -63,7 +63,7 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
     public void onClick(Animal animal) {
 
         Intent intentDatos = new Intent(this, InfoActivity.class);
-        intentDatos.putExtra(EXTRAANIMAL, animal);
+        intentDatos.putExtra(EXTRA_ANIMAL, animal);
         startActivity(intentDatos);
 
     }
