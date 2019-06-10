@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ZooAnimales">
+        android:theme="@style/AppTheme.Login">
+        <activity android:name=".LoginZoo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,9 @@
         <activity android:name=".ActBotoneada" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PostLoginActivity" />
-        <activity android:name=".LoginZoo"/>
+        <activity android:name=".ZooAnimales" />
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".InfoActiity"></activity>
     </application>
 
 </manifest>
