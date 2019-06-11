@@ -40,7 +40,7 @@ public class InfoActivity extends AppCompatActivity {
         nombre = findViewById(R.id.tvNombre);
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         especie.setText("Especie: " + animal.getEspecie());
-        info.setText("Descripcion: \n" + animal.getInfo());
+        info.setText(String.format("Descripcion: \n\n" + animal.getInfo() + "\n\n Atraccion y horario: " + String.format(getResources().getString(R.string.atraccion),animal.getAtraccion().getNombre(),animal.getAtraccion().getHolrario())));
         foto.setImageResource(animal.getFoto());
         nombre.setText("Nombre: " + animal.getNombre());
         url=animal.getUrl();

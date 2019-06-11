@@ -12,9 +12,10 @@ public class Animal implements Serializable {
     private int foto;
     private int colorFondo;
     private String url;
+    private Atraccion atraccion;
 
 
-    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo, String url) {
+    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo, String url,Atraccion horario) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.especie = especie;
@@ -22,6 +23,7 @@ public class Animal implements Serializable {
         this.foto = foto;
         this.colorFondo = colorFondo;
         this.url = url;
+        this.atraccion = horario;
     }
 
     public String getUrl() {
@@ -30,15 +32,6 @@ public class Animal implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Animal(String nombre, int imagen, String especie, String info, int foto) {
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.especie = especie;
-        this.info = info;
-        this.foto = foto;
-        this.colorFondo = 255;
     }
 
     public int getColorFondo() {
@@ -89,5 +82,16 @@ public class Animal implements Serializable {
         this.imagen = imagen;
     }
 
+    public Atraccion getAtraccion() {
+        return this.atraccion;
+    }
 
+    public void setAtraccion(Atraccion atraccion) {
+        this.atraccion = atraccion;
+    }
+
+    public void setHorario(String nombre, String horario) {
+        this.atraccion.actualizarHorario(horario);
+        this.atraccion.setNombre(nombre);
+    }
 }

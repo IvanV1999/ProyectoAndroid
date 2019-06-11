@@ -18,6 +18,7 @@
     <string name="bienvenidoDefault">Hola %s</string>
     <string name="hi">Hi: %s</string>
     <string name="test">Test</string>
+    <string name="atraccion">%s %s</string>
     <string name="regresar">regresar</string>
     <string name="back">back</string>
     <string name="masInfo">mas Info</string>
