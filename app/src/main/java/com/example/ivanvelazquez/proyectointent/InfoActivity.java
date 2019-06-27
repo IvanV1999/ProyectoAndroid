@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ public class InfoActivity extends AppCompatActivity {
     private Button masInfo;
     private String idioma = Locale.getDefault().toString();
     private String url;
+    private FavoritoView favoritoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +41,15 @@ public class InfoActivity extends AppCompatActivity {
         regresar = findViewById(R.id.btnRegresar);
         nombre = findViewById(R.id.tvNombre);
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
+        favoritoView = findViewById(R.id.idFavourite);
         especie.setText("Especie: " + animal.getEspecie());
         info.setText(String.format("Descripcion: \n\n" + animal.getInfo() + "\n\n Atraccion y horario: " + String.format(getResources().getString(R.string.atraccion),animal.getAtraccion().getNombre(),animal.getAtraccion().getHolrario())));
         foto.setImageResource(animal.getFoto());
         nombre.setText("Nombre: " + animal.getNombre());
         url=animal.getUrl();
         asignarTextoBoton();
-
+        favoritoView.setEstaLikeado(false);
+        favoritoView.setAnimal(animal.getNombre());
 
     }
     public void regresar(View view){

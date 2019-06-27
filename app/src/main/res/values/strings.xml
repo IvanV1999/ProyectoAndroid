@@ -23,4 +23,7 @@
     <string name="back">back</string>
     <string name="masInfo">mas Info</string>
     <string name="moreInfo">more info</string>
+    <string name="nombreSelector">nombre default</string>
+    <string name="recuest">Favourite</string>
+    <string name="recuestGrats">%s added to favourites</string>
 </resources>
