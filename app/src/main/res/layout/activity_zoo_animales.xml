@@ -10,14 +10,25 @@
         android:id="@+id/tvBienvenido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         tools:text="Bienvenido" />
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/IdRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp" />
+
+    <ImageButton
+        android:id="@+id/IvSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/setting"
+        android:onClick="goToSettings"/>
+
 </LinearLayout>

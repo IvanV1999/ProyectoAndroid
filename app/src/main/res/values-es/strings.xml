@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoIntent</string>
+    <string name="ir_a_la_otra_act">Ir a la otra act</string>
+    <string name="helloWorld">Hola Mundo</string>
+    <string name="descripcionImagen">Una Imagen</string>
+    <string name="TextViewDefault">Contenido Default</string>
+    <string name="textUser">Usuario</string>
+    <string name="textContraseña">Contraseña</string>
+    <string name="loguear">Sign in</string>
+    <string name="esMasculino">Masculino</string>
+    <string name="esFemenino">Femenino</string>
+    <string name="incorrecto">Usuario o contraseña incorrectos</string>
+    <string name="welcomeSr">Bienvenido Sr: %s</string>
+    <string name="welcomeMiss">Bienvenida Sra: %s</string>
+    <string name="hi">Hola: %s</string>
+    <string name="test">Test</string>
+    <string name="atraccion">%s %s</string>
+    <string name="back">Regresar</string>
+    <string name="moreInfo">Mas informacion</string>
+    <string name="nombreSelector">nombre default</string>
+    <string name="recuest">Favoritear</string>
+    <string name="recuestGrats">%s añadido a favoritos</string>
+    <string name="Settings">Ajustes</string>
+    <string name="language">Idioma</string>
+    <string name="logout">Log Out</string>
+    <string name="apply">Aplicar</string>
+</resources>
