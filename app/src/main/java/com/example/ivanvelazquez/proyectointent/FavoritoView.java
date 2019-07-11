@@ -20,6 +20,7 @@ public class FavoritoView extends LinearLayout  {
     private boolean estaLikeado=false;
     public Callback clb;
 
+
     public void setClb(Callback clb) {
         this.clb = clb;
     }
@@ -44,7 +45,6 @@ public class FavoritoView extends LinearLayout  {
         fav= findViewById(R.id.tvFavorito);
 
 
-        TypedArray array = context.getTheme().obtainStyledAttributes(attrs, R.styleable.attrFavoritos,0,0);
 
         fav.setText(String.format(setState(),getAnimal()));
         star.setOnClickListener(new OnClickListener() {
@@ -61,11 +61,20 @@ public class FavoritoView extends LinearLayout  {
 
     @Override
     protected Parcelable onSaveInstanceState() {
-        return super.onSaveInstanceState();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("superState", super.onSaveInstanceState());
+        bundle.putBoolean("Likeado", this.estaLikeado);
+        return bundle;
     }
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof Bundle) // implicit null check
+        {
+            Bundle bundle = (Bundle) state;
+            this.estaLikeado = bundle.getBoolean("Likeado");
+            state = bundle.getParcelable("superState");
+        }
         super.onRestoreInstanceState(state);
     }
 

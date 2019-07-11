@@ -24,11 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void internacionalizar() {
         holaMundo = (TextView) findViewById(R.id.tvHolaMundo);
-        if (idioma.equals("en_US")) {
-            holaMundo.setText(R.string.EnHolaMundo);
-        } else {
-            holaMundo.setText(R.string.EsHolaMundo);
-        }
+        holaMundo.setText(R.string.helloWorld);
     }
 
     public void apretarBoton(View view) {
@@ -39,3 +35,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(actboton);
     }
 }
+

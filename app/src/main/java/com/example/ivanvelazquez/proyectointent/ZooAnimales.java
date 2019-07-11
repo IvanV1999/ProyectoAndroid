@@ -2,10 +2,13 @@ package com.example.ivanvelazquez.proyectointent;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
     private TextView tvBienvenida;
     private String opcion;
     private String usr;
+    private ImageView settings;
     public static final String EXTRA_ANIMAL = "EXTRA_ANIMAL";
 
     @Override
@@ -34,12 +38,15 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
         opcion = bundle.getString(EXTRA_MENSAJE);
         usr = bundle.getString(EXTRA_USUARIO);
         tvBienvenida = (TextView) findViewById(R.id.tvBienvenido);
+        settings = findViewById(R.id.IvSetting);
         saludar();
         mRecyclerView = (RecyclerView) findViewById(R.id.IdRecycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         cargarAnimales();
         AdapterDatos adapterDatos = new AdapterDatos(animales, this);
         mRecyclerView.setAdapter(adapterDatos);
+
+
 
     }
 
@@ -77,6 +84,11 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
 
 
     }
+    public void goToSettings(View view){
+        Intent settingsAct = new Intent(this,Settings.class);
+        startActivity(settingsAct);
+    }
+
 
 }
 

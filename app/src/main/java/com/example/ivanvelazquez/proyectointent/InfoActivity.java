@@ -53,6 +53,7 @@ public class InfoActivity extends AppCompatActivity implements FavoritoView.Call
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         favoritoView = findViewById(R.id.idFavourite);
         favoritoView.setClb(this);
+
         especie.setText("Especie: " + animal.getEspecie());
         info.setText(String.format("Descripcion: \n\n" + animal.getInfo() + "\n\n Atraccion y horario: " + String.format(getResources().getString(R.string.atraccion),animal.getAtraccion().getNombre(),animal.getAtraccion().getHolrario())));
         foto.setImageResource(animal.getFoto());

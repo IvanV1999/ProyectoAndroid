@@ -21,7 +21,7 @@ public class LoginZoo extends AppCompatActivity {
     private RadioGroup rgSexo;
     private RadioButton rbMasculino;
     private RadioButton rbFemenino;
-    private String opcion = "Hola: ";
+    private String opcion;
     private String usr, psw;
     private EditText user;
     private EditText password;
@@ -43,29 +43,22 @@ public class LoginZoo extends AppCompatActivity {
         rgSexo = (RadioGroup) findViewById(R.id.rgOpciones);
         rbMasculino = (RadioButton) findViewById(R.id.masculino);
         rbFemenino = (RadioButton) findViewById(R.id.femenino);
-        if (idioma.equals("en_US")) {
             opcion = (String) getResources().getText(R.string.hi);
-        }
-
         rbMasculino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (idioma.equals("en_US")) {
+
                     opcion = (String) getResources().getText(R.string.welcomeSr);
-                } else {
-                    opcion = (String) getResources().getText(R.string.bienvenidosr);
-                }
+
 
             }
         });
         rbFemenino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (idioma.equals("en_US")) {
+
                     opcion = (String) getResources().getText(R.string.welcomeMiss);
-                } else {
-                    opcion = (String) getResources().getText(R.string.bienvenidasra);
-                }
+
 
             }
         });
