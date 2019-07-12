@@ -1,5 +1,7 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +26,7 @@ public class Atraccion implements Serializable {
         try {
             this.horario = dateFormat.parse(horario);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.i("ERR: ","error al tratar de transformar horario");
         }
     }
 

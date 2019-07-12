@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Button applyButton;
     private Button backButton;
@@ -65,7 +65,6 @@ public class Settings extends AppCompatActivity {
         });
 
 
-        /// TODO: 02/07/19 terminar el onCreate.
     }
     public void logOut(View view){
         Intent  restart = new Intent(this,LoginZoo.class);
@@ -76,8 +75,7 @@ public class Settings extends AppCompatActivity {
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void apply(View view){
-        //getApplicationContext().createConfigurationContext(LocaleHelper.changeLocale(this.getResources(),"es"));
-        //Locale l = Locale.getDefault();
+
         attachBaseContext(getApplicationContext());
     }
 
@@ -94,4 +92,3 @@ public class Settings extends AppCompatActivity {
     }
 
 }
-//terminar

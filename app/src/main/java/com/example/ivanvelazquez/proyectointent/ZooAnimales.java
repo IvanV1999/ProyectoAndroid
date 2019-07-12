@@ -2,7 +2,6 @@ package com.example.ivanvelazquez.proyectointent;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -128,7 +127,7 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
 
     }
     public void goToSettings(View view){
-        Intent settingsAct = new Intent(this,Settings.class);
+        Intent settingsAct = new Intent(this, SettingsActivity.class);
         startActivity(settingsAct);
     }
 

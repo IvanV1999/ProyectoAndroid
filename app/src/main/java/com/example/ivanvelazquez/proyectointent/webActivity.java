@@ -24,11 +24,10 @@ public class webActivity extends AppCompatActivity {
         web = findViewById(R.id.webView);
         web.getSettings().setLoadsImagesAutomatically(true);
         web.getSettings().setJavaScriptEnabled(true);
-        web.addJavascriptInterface(new WebAppInterface(this), "Android");
         web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         web.setWebChromeClient(new WebChromeClient());
-        //web.loadUrl(url);
-        web.loadUrl(" < Button type = \"button\" value =\"Say hello\" onClick = \"showAndroidToast('Hello Android!')\"/> <script type = \"text/javascript\"> function showAndroidToast(toast) Android.showToast(toast); } </script >");
+        web.loadUrl(url);
+
 
     }
 
@@ -40,8 +39,6 @@ public class webActivity extends AppCompatActivity {
             context = c;
         }
 
-
-        @JavascriptInterface
         public void showToast(String toast) {
             Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
 

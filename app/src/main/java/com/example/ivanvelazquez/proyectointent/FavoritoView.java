@@ -19,7 +19,8 @@ public class FavoritoView extends LinearLayout  {
     private ImageView star;
     private boolean estaLikeado=false;
     public Callback clb;
-
+    public static final String SUPERSTATE="SUPERSTATE";
+    public static final String LIKEADO="LIKEADO";
 
     public void setClb(Callback clb) {
         this.clb = clb;
@@ -62,8 +63,8 @@ public class FavoritoView extends LinearLayout  {
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
-        bundle.putParcelable("superState", super.onSaveInstanceState());
-        bundle.putBoolean("Likeado", this.estaLikeado);
+        bundle.putParcelable(SUPERSTATE, super.onSaveInstanceState());
+        bundle.putBoolean(LIKEADO, this.estaLikeado);
         return bundle;
     }
 
@@ -72,8 +73,8 @@ public class FavoritoView extends LinearLayout  {
         if (state instanceof Bundle) // implicit null check
         {
             Bundle bundle = (Bundle) state;
-            this.estaLikeado = bundle.getBoolean("Likeado");
-            state = bundle.getParcelable("superState");
+            this.estaLikeado = bundle.getBoolean(LIKEADO);
+            state = bundle.getParcelable(SUPERSTATE);
         }
         super.onRestoreInstanceState(state);
     }
