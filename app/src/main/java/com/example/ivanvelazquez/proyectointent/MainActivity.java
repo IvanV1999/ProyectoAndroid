@@ -34,5 +34,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("LOG DE INFO---", "Se ingreso al metodo apretar boton y se enviara el mensaje" + mensaje);
         startActivity(actboton);
     }
+
+
+
 }
 

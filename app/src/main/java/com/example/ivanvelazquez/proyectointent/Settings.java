@@ -1,10 +1,13 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -71,9 +74,21 @@ public class Settings extends AppCompatActivity {
         startActivity(restart);
         finish();
     }
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void apply(View view){
-        LocaleHelper.changeLocale(this.getResources(),"es");
+        //getApplicationContext().createConfigurationContext(LocaleHelper.changeLocale(this.getResources(),"es"));
+        //Locale l = Locale.getDefault();
+        attachBaseContext(getApplicationContext());
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Locale newLocale = new Locale("es_AR");
+
+        Context context = ContextWrapper.wrap(newBase, newLocale);
+        super.attachBaseContext(context);
+    }
+
     public void back(View view){
         finish();
     }
