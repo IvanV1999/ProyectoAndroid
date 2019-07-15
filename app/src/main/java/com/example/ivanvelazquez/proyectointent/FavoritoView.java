@@ -10,16 +10,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class FavoritoView extends LinearLayout  {
+public class FavoritoView extends LinearLayout {
+    @BindView(R.id.StarID)
+    ImageView star;
+    @BindView(R.id.tvFavorito)
+    TextView fav;
     private String animal;
-    private TextView fav;
-    private ImageView star;
-    private boolean estaLikeado=false;
+    private boolean estaLikeado = false;
     public Callback clb;
-    public static final String SUPERSTATE="SUPERSTATE";
-    public static final String LIKEADO="LIKEADO";
+    public static final String SUPERSTATE = "SUPERSTATE";
+    public static final String LIKEADO = "LIKEADO";
 
     public void setClb(Callback clb) {
         this.clb = clb;
@@ -27,12 +32,12 @@ public class FavoritoView extends LinearLayout  {
 
     public FavoritoView(Context context) {
         super(context);
-        init(context,null);
+        init(context, null);
     }
 
     public FavoritoView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     public FavoritoView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -40,23 +45,10 @@ public class FavoritoView extends LinearLayout  {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        LayoutInflater.from(context).inflate(R.layout.favoritosview,this, true );
-        star= findViewById(R.id.StarID);
-        fav= findViewById(R.id.tvFavorito);
-
-
-
-        fav.setText(String.format(setState(),getAnimal()));
-        star.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                favChangeState();
-                clb.onClick();
-
-            }
-        });
+        LayoutInflater.from(context).inflate(R.layout.favoritosview, this, true);
+        ButterKnife.bind(this);
+        fav.setText(String.format(setState(), getAnimal()));
     }
-
 
 
     @Override
@@ -78,8 +70,8 @@ public class FavoritoView extends LinearLayout  {
         super.onRestoreInstanceState(state);
     }
 
-    public void setEstaLikeado(boolean likeado){
-        estaLikeado=likeado;
+    public void setEstaLikeado(boolean likeado) {
+        estaLikeado = likeado;
     }
 
     public void setAnimal(String animal) {
@@ -90,20 +82,28 @@ public class FavoritoView extends LinearLayout  {
         return animal;
     }
 
-    public String setState(){
+    public String setState() {
         String text;
-        text = estaLikeado ? getResources().getString(R.string.recuestGrats) :getResources().getString(R.string.recuest);
+        text = estaLikeado ? getResources().getString(R.string.recuestGrats) : getResources().getString(R.string.recuest);
         return text;
 
     }
-    public void favChangeState(){
+
+    public void favChangeState() {
         star.setImageResource(estaLikeado ? R.drawable.nofavorito : R.drawable.favorito);
         estaLikeado = !estaLikeado;
-        fav.setText(String.format(setState(),getAnimal()));
+        fav.setText(String.format(setState(), getAnimal()));
     }
 
-    public interface Callback{
+    public interface Callback {
         void onClick();
+    }
+
+    @OnClick(R.id.StarID)
+    public void asd() {
+        favChangeState();
+        clb.onClick();
+
     }
 
 }
