@@ -25,4 +25,8 @@
     <string name="language">Idioma</string>
     <string name="logout">Log Out</string>
     <string name="apply">Aplicar</string>
+    <string name="name">Nombre: </string>
+    <string name="description">Descripcion: </string>
+    <string name="show">el show:  </string>
+    <string name="species">Especie: </string>
 </resources>

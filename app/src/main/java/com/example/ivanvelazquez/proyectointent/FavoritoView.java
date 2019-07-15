@@ -1,7 +1,6 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -51,7 +50,7 @@ public class FavoritoView extends LinearLayout  {
         star.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                setViewComponents();
+                favChangeState();
                 clb.onClick();
 
             }
@@ -97,18 +96,9 @@ public class FavoritoView extends LinearLayout  {
         return text;
 
     }
-    public void setViewComponents(){
-        if(estaLikeado){
-            estaLikeado=false;
-            star.setImageResource(R.drawable.nofavorito);
-
-
-        }
-        else{
-            estaLikeado=true;
-            star.setImageResource(R.drawable.favorito);
-
-        }
+    public void favChangeState(){
+        star.setImageResource(estaLikeado ? R.drawable.nofavorito : R.drawable.favorito);
+        estaLikeado = !estaLikeado;
         fav.setText(String.format(setState(),getAnimal()));
     }
 

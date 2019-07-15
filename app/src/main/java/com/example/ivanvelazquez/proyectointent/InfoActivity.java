@@ -25,6 +25,7 @@ public class InfoActivity extends AppCompatActivity implements FavoritoView.Call
     private TextView especie;
     private TextView info;
     private ImageView foto;
+    private TextView horariosTv;
     private TextView nombre;
     private Button regresar;
     private Button masInfo;
@@ -43,6 +44,7 @@ public class InfoActivity extends AppCompatActivity implements FavoritoView.Call
         restoreSavedInstance(savedInstanceState);
         setContentView(R.layout.activity_info_actiity);
         Bundle bundle = getIntent().getExtras();
+        horariosTv = findViewById(R.id.TvHorarios);
         masInfo = findViewById(R.id.btnMasInfo);
         especie = findViewById(R.id.tvEspecie);
         info = findViewById(R.id.tvInfo);
@@ -54,10 +56,11 @@ public class InfoActivity extends AppCompatActivity implements FavoritoView.Call
         favoritoView = findViewById(R.id.idFavourite);
         favoritoView.setClb(this);
 
-        especie.setText("Especie: " + animal.getEspecie());
-        info.setText(String.format("Descripcion: \n\n" + animal.getInfo() + "\n\n Atraccion y horario: " + String.format(getResources().getString(R.string.atraccion),animal.getAtraccion().getNombre(),animal.getAtraccion().getHolrario())));
+        especie.setText(getString(R.string.species) + animal.getEspecie());
+        info.setText(String.format(getString(R.string.description)  + animal.getInfo()));
+        horariosTv.setText(getString(R.string.show) + String.format(getResources().getString(R.string.atraccion),animal.getAtraccion().getNombre(),animal.getAtraccion().getHolrario()));
         foto.setImageResource(animal.getFoto());
-        nombre.setText("Nombre: " + animal.getNombre());
+        nombre.setText(getString(R.string.name) + animal.getNombre());
         url=animal.getUrl();
         asignarTextoBoton();
         favoritoView.setEstaLikeado(false);
