@@ -1,6 +1,8 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Animal implements Serializable {
     private String nombre;
@@ -9,24 +11,27 @@ public class Animal implements Serializable {
     private String info;
     private int foto;
     private int colorFondo;
+    private String url;
+    private Atraccion atraccion;
 
 
-    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo) {
+    public Animal(String nombre, int imagen, String especie, String info, int foto, int colorFondo, String url,Atraccion horario) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.especie = especie;
         this.info = info;
         this.foto = foto;
         this.colorFondo = colorFondo;
+        this.url = url;
+        this.atraccion = horario;
     }
 
-    public Animal(String nombre, int imagen, String especie, String info, int foto) {
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.especie = especie;
-        this.info = info;
-        this.foto = foto;
-        this.colorFondo = 255;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getColorFondo() {
@@ -77,5 +82,16 @@ public class Animal implements Serializable {
         this.imagen = imagen;
     }
 
+    public Atraccion getAtraccion() {
+        return this.atraccion;
+    }
 
+    public void setAtraccion(Atraccion atraccion) {
+        this.atraccion = atraccion;
+    }
+
+    public void setHorario(String nombre, String horario) {
+        this.atraccion.actualizarHorario(horario);
+        this.atraccion.setNombre(nombre);
+    }
 }

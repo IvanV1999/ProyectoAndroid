@@ -8,12 +8,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"
     tools:context=".LoginZoo">
 
     <ImageView
@@ -25,9 +19,6 @@
         android:background="@color/colorPrimary"
         android:contentDescription="@string/descripcionImagen"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/globallogic2" />
 
     <EditText
@@ -36,10 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/login_margin"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="@dimen/login_margin"
+        android:layout_marginTop="@dimen/margenGral"
+        android:layout_marginEnd="@dimen/login_margin"
+        android:layout_marginRight="@dimen/login_margin"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/textUser"
@@ -52,11 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="@dimen/login_margin"
+        android:layout_marginLeft="@dimen/login_margin"
+        android:layout_marginTop="@dimen/margenGral"
+        android:layout_marginEnd="@dimen/login_margin"
+        android:layout_marginRight="@dimen/login_margin"
         android:ems="10"
         android:hint="@string/textContraseña"
         android:importantForAutofill="no"
@@ -69,11 +60,11 @@
         android:layout_width="129dp"
         android:layout_height="119dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_marginStart="@dimen/login_margin"
+        android:layout_marginLeft="@dimen/login_margin"
+        android:layout_marginTop="@dimen/login_margin"
+        android:layout_marginEnd="@dimen/login_margin"
+        android:layout_marginRight="@dimen/login_margin">
 
         <RadioButton
             android:id="@+id/masculino"
@@ -103,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/login_margin"
         android:layout_marginBottom="16dp"
         android:onClick="loguear"
         android:text="@string/loguear" />

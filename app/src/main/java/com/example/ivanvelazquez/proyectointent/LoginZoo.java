@@ -11,20 +11,22 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
 
 
 public class LoginZoo extends AppCompatActivity {
 
     private static final String USRDEF = "GL", PASSDEF = "Android";
-    public static final String EXTRAMENSAJE = "mensaje bienvenida", EXTRAUSUARIO = "Usuario";
+    public static final String EXTRA_MENSAJE = "EXTRA_MENSAJE", EXTRA_USUARIO = "EXTRA_USUARIO";
     private RadioGroup rgSexo;
     private RadioButton rbMasculino;
     private RadioButton rbFemenino;
-    private String opcion = "Hola: ";
+    private String opcion;
     private String usr, psw;
     private EditText user;
     private EditText password;
     private TextView result;
+    private String idioma = Locale.getDefault().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +43,22 @@ public class LoginZoo extends AppCompatActivity {
         rgSexo = (RadioGroup) findViewById(R.id.rgOpciones);
         rbMasculino = (RadioButton) findViewById(R.id.masculino);
         rbFemenino = (RadioButton) findViewById(R.id.femenino);
-
+            opcion = (String) getResources().getText(R.string.hi);
         rbMasculino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion = "Bienvenido Señor: ";
+
+                    opcion = (String) getResources().getText(R.string.welcomeSr);
+
 
             }
         });
         rbFemenino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opcion = "Bienvenida Señora: ";
+
+                    opcion = (String) getResources().getText(R.string.welcomeMiss);
+
 
             }
         });
@@ -65,8 +71,8 @@ public class LoginZoo extends AppCompatActivity {
         if (usr.equals(USRDEF) && psw.equals(PASSDEF)) {
 
             Intent postLog = new Intent(this, ZooAnimales.class);
-            postLog.putExtra(EXTRAMENSAJE, opcion);
-            postLog.putExtra(EXTRAUSUARIO, usr);
+            postLog.putExtra(EXTRA_MENSAJE, opcion);
+            postLog.putExtra(EXTRA_USUARIO, usr);
             Log.i("LOG-INFO", "se inicia la actividad postLogueo, la opcion seleccionada de genero es: " + opcion + " usuario: " + usr);
             startActivity(postLog);
 
