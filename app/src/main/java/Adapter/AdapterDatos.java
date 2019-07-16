@@ -3,6 +3,7 @@ package Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,9 @@ import com.example.ivanvelazquez.proyectointent.Animal;
 import com.example.ivanvelazquez.proyectointent.R;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> {
 
@@ -44,36 +48,29 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
         return animales.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
+        @BindView(R.id.tvTexto)
         TextView nombre;
+        @BindView(R.id.ImgAnimal)
         ImageView imagen;
         Animal animal;
 
 
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            nombre = itemView.findViewById(R.id.tvTexto);
-            imagen = itemView.findViewById(R.id.ImgAnimal);
-
-
-
-
         }
 
         public void asignarDatos(Animal s) {
             nombre.setText(s.getNombre() + " | " + s.getEspecie());
             imagen.setImageResource(s.getImagen());
             animal = s;
-            itemView.setOnClickListener(this);
             itemView.setBackgroundColor(s.getColorFondo());
 
         }
 
-        @Override
-        public void onClick(View v) {
+        @OnClick(R.id.idItemList)
+        public void onClick() {
             animalListener.onClick(animal);
 
         }
