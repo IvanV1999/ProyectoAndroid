@@ -21,7 +21,7 @@ import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_MENSAJE;
 import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_USUARIO;
 
 
-public class ZooAnimales extends AppCompatActivity implements AdapterDatos.AnimalListener {
+public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListener {
 
     @BindView(R.id.IdRecycler)RecyclerView mRecyclerView;
     @BindView(R.id.tvBienvenido)TextView tvBienvenida;
@@ -33,14 +33,13 @@ public class ZooAnimales extends AppCompatActivity implements AdapterDatos.Anima
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo_animales);
-        ButterKnife.bind(this);
+        super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         opcion = bundle.getString(EXTRA_MENSAJE);
         usr = bundle.getString(EXTRA_USUARIO);
         saludar();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, mRecyclerView.VERTICAL, false));
         cargarAnimales();
         AdapterDatos adapterDatos = new AdapterDatos(animales, this);
         mRecyclerView.setAdapter(adapterDatos);
