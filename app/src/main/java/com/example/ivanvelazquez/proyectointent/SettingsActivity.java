@@ -1,48 +1,58 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button applyButton;
-    private Button backButton;
-    private Button logOutButton;
-    private TextView languageTv;
-    private RadioGroup languageRb;
-    private RadioButton esRb;
-    private RadioButton enRb;
-    private TextView settingsTv;
+
+    @BindView(R.id.applyButton)
+    Button applyButton;
+
+    @BindView(R.id.backButton)
+    Button backButton;
+
+    @BindView(R.id.logOutButton)
+    Button logOutButton;
+
+    @BindView(R.id.tVLanguages)
+    TextView languageTv;
+
+    @BindView(R.id.rBLanguages)
+    RadioGroup languageRb;
+
+    @BindView(R.id.rBEs)
+    RadioButton esRb;
+
+    @BindView(R.id.rBEn)
+    RadioButton enRb;
+
+    @BindView(R.id.TvSettings)
+    TextView settingsTv;
     private String idioma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        applyButton=findViewById(R.id.applyButton);
-        backButton=findViewById(R.id.backButton);
-        logOutButton=findViewById(R.id.logOutButton);
-        languageTv = findViewById(R.id.tVLanguages);
-        languageRb=findViewById(R.id.rBLanguages);
-        esRb=findViewById(R.id.rBEs);
-        enRb=findViewById(R.id.rBEn);
-        settingsTv=findViewById(R.id.TvSettings);
+        ButterKnife.bind(this);
 
         settingsTv.setText(R.string.Settings);
         languageTv.setText(R.string.language);
@@ -51,30 +61,28 @@ public class SettingsActivity extends AppCompatActivity {
         backButton.setText(R.string.back);
 
 
-        esRb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                idioma = "es";
-            }
-        });
-        enRb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                idioma = "en";
-            }
-        });
-
-
     }
-    public void logOut(View view){
-        Intent  restart = new Intent(this,LoginZoo.class);
+
+    @OnClick(R.id.rBEs)
+    public void ESonClick() {
+        idioma = "es";
+    }
+
+    @OnClick(R.id.rBEn)
+    public void ENonClick() {
+        idioma = "en";
+    }
+
+    public void logOut(View view) {
+        Intent restart = new Intent(this, LoginZoo.class);
         restart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         restart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(restart);
         finish();
     }
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void apply(View view){
+    public void apply(View view) {
 
         attachBaseContext(getApplicationContext());
     }
@@ -87,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.attachBaseContext(context);
     }
 
-    public void back(View view){
+    public void back(View view) {
         finish();
     }
 

@@ -3,9 +3,9 @@ package com.example.ivanvelazquez.proyectointent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import Adapter.AdapterDatos;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_MENSAJE;
 import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_USUARIO;
@@ -21,25 +23,23 @@ import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_USUARIO;
 
 public class ZooAnimales extends AppCompatActivity implements AdapterDatos.AnimalListener {
 
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.IdRecycler)RecyclerView mRecyclerView;
+    @BindView(R.id.tvBienvenido)TextView tvBienvenida;
+    @BindView(R.id.IvSetting)ImageView settings;
     private ArrayList<Animal> animales = new ArrayList<Animal>();
-    private TextView tvBienvenida;
     private String opcion;
     private String usr;
-    private ImageView settings;
     public static final String EXTRA_ANIMAL = "EXTRA_ANIMAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo_animales);
+        ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
         opcion = bundle.getString(EXTRA_MENSAJE);
         usr = bundle.getString(EXTRA_USUARIO);
-        tvBienvenida = (TextView) findViewById(R.id.tvBienvenido);
-        settings = findViewById(R.id.IvSetting);
         saludar();
-        mRecyclerView = (RecyclerView) findViewById(R.id.IdRecycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         cargarAnimales();
         AdapterDatos adapterDatos = new AdapterDatos(animales, this);
