@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 
 import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRA_ANIMAL;
 
-public class InfoActivity extends AppCompatActivity implements FavoritoView.Callback {
+public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     public static final String LINK = "link de mayor informacion";
     private Animal animal;

@@ -8,14 +8,13 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ActBotoneada extends AppCompatActivity {
+public class ActBotoneada extends ButterBind {
 
     @BindView(R.id.tvMensaje) TextView TVM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_botoneada);
-        ButterKnife.bind(this);
         String mensajeEntrada = getIntent().getStringExtra("mensajeEntrada");
         TVM.setText(mensajeEntrada);
         Log.i("LOG DE INFO---","Se logueo el mensaje de entrada: "+mensajeEntrada);
