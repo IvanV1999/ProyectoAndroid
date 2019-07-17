@@ -16,7 +16,7 @@ import butterknife.OnClick;
 
 import static com.example.ivanvelazquez.proyectointent.InfoActivity.LINK;
 
-public class webActivity extends AppCompatActivity {
+public class webActivity extends ButterBind {
 
 
     @BindView(R.id.webView)
@@ -24,10 +24,9 @@ public class webActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+        super.onCreate(savedInstanceState);
         String url = getIntent().getStringExtra(LINK);
-        ButterKnife.bind(this);
         web.getSettings().setLoadsImagesAutomatically(true);
         web.getSettings().setJavaScriptEnabled(true);
         web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);

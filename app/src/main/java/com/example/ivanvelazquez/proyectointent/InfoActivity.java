@@ -53,11 +53,10 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_info_actiity);
         super.onCreate(savedInstanceState);
         restoreSavedInstance(savedInstanceState);
-        setContentView(R.layout.activity_info_actiity);
         Bundle bundle = getIntent().getExtras();
-        ButterKnife.bind(this);
         info.setMovementMethod(new ScrollingMovementMethod());
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         favoritoView.setClb(this);
