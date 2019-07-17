@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_MENSAJE;
 import static com.example.ivanvelazquez.proyectointent.LoginZoo.EXTRA_USUARIO;
 
-public class PostLoginActivity extends ButterBind {
+public class PostLoginActivity extends AppCompatActivity {
     @BindView(R.id.tvSaludo)
     TextView tvSaludo;
     String opcion;
@@ -25,6 +25,7 @@ public class PostLoginActivity extends ButterBind {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_login);
         Bundle bundle = getIntent().getExtras();
+        ButterKnife.bind(this);
         opcion = bundle.getString(EXTRA_MENSAJE);
         usr = bundle.getString(EXTRA_USUARIO);
         Log.i("DATOSRECIBIDOS", usr + opcion);
