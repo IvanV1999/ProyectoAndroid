@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginZoo extends AppCompatActivity {
+public class LoginZoo extends ButterBind {
 
     private static final String USRDEF = "GL", PASSDEF = "Android";
     public static final String EXTRA_MENSAJE = "EXTRA_MENSAJE", EXTRA_USUARIO = "EXTRA_USUARIO";
@@ -41,9 +41,12 @@ public class LoginZoo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_zoo);
-        ButterKnife.bind(this);
         opcion = (String) getResources().getText(R.string.hi);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_login_zoo;
     }
 
     @OnClick({R.id.masculino})

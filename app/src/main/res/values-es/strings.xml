@@ -29,4 +29,6 @@
     <string name="description">Descripcion: </string>
     <string name="show">el show:  </string>
     <string name="species">Especie: </string>
+    <string name="map">Mostrar Localizacion</string>
+    <string name="shareAnimal">Compartir animal</string>
 </resources>

@@ -28,4 +28,6 @@
     <string name="description">Description: </string>
     <string name="show">The show: </string>
     <string name="species">Species: </string>
+    <string name="map">Show Localization</string>
+    <string name="shareAnimal">Share Animal</string>
 </resources>

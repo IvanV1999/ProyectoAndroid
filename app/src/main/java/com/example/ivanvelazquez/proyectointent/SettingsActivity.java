@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends ButterBind {
 
 
     @BindView(R.id.applyButton)
@@ -51,9 +51,6 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        ButterKnife.bind(this);
-
         settingsTv.setText(R.string.Settings);
         languageTv.setText(R.string.language);
         logOutButton.setText(R.string.logout);
@@ -61,6 +58,11 @@ public class SettingsActivity extends AppCompatActivity {
         backButton.setText(R.string.back);
 
 
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_settings;
     }
 
     @OnClick(R.id.rBEs)

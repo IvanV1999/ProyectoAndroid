@@ -14,9 +14,13 @@ public class ActBotoneada extends ButterBind {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_botoneada);
         String mensajeEntrada = getIntent().getStringExtra("mensajeEntrada");
         TVM.setText(mensajeEntrada);
         Log.i("LOG DE INFO---","Se logueo el mensaje de entrada: "+mensajeEntrada);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_act_botoneada;
     }
 }

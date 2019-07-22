@@ -30,6 +30,11 @@ public class PostLoginActivity extends ButterBind {
         saludar();
     }
 
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_post_login;
+    }
+
     public void saludar() {
         tvSaludo.setText(String.format(opcion + usr));
     }

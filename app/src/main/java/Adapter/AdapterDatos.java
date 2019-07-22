@@ -16,6 +16,7 @@ import com.example.ivanvelazquez.proyectointent.R;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> {
@@ -59,6 +60,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
         }
 
         public void asignarDatos(Animal s) {

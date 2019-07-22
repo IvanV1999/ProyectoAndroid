@@ -10,7 +10,10 @@ public abstract class ButterBind extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentView());
         ButterKnife.bind(this);
+
     }
+    protected abstract int getContentView();
 
 }

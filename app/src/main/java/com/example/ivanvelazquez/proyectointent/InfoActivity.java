@@ -2,10 +2,13 @@ package com.example.ivanvelazquez.proyectointent;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -20,6 +25,7 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRA_ANIMAL;
 
@@ -43,21 +49,27 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     Button masInfo;
     @BindView(R.id.idFavourite)
     FavoritoView favoritoView;
+    @BindView(R.id.tvShare)
+    TextView tvCamera;
+    @BindView(R.id.IvCamera)
+    ImageView ivCamera;
+    @BindView(R.id.IvShare)
+    ImageView ivShare;
     private String idioma = Locale.getDefault().toString();
     private String url;
     public int baseHour = 0;
     private int backgroundColor = 0;
+    private Uri photoUri;
     public static final String BACKGROUND = "BACKGROUNDCOLOR";
     public static final String BASEHOUR = "BASEHOUR";
+    private static final int REQUEST_CAMERA = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         restoreSavedInstance(savedInstanceState);
-        setContentView(R.layout.activity_info_actiity);
         Bundle bundle = getIntent().getExtras();
-        ButterKnife.bind(this);
         info.setMovementMethod(new ScrollingMovementMethod());
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         favoritoView.setClb(this);
@@ -70,10 +82,16 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
         url = animal.getUrl();
         favoritoView.setEstaLikeado(false);
         favoritoView.setAnimal(animal.getNombre());
+        tvCamera.setText(R.string.shareAnimal);
 
 
         regresar.setText(R.string.back);
         masInfo.setText(R.string.moreInfo);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_info_actiity;
     }
 
     private void restoreSavedInstance(Bundle savedInstanceState) {
@@ -140,6 +158,47 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     }
 
+
+    @OnClick(R.id.IvShare)
+    public void sendinfo() {
+        Intent infoIntent = new Intent(Intent.ACTION_SEND);
+        infoIntent.setType("text/plain");
+        infoIntent.putExtra(Intent.EXTRA_SUBJECT, "Aplicacion Animales");
+        infoIntent.putExtra(Intent.EXTRA_TEXT, String.format("Lee la info de este animal:\n\n %s: \n %s", animal.getNombre(), animal.getInfo()));
+        startActivity(Intent.createChooser(infoIntent, "Send info..."));
+    }
+
+
+    @OnClick(R.id.IvCamera)
+    public void takePic() {
+        File photo = new File(android.os.Environment.getExternalStorageDirectory(), "Animal.jpg");
+        photoUri = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".GenericFileProvider", photo);
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+        startActivityForResult(intent, REQUEST_CAMERA);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            sendMail();
+            photoUri = null;
+        } else {
+            Log.d("InfoActivity", "Camera error");
+        }
+
+    }
+
+    public void sendMail() {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("application/image");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ivandvelazquez99@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Aplicacion Animales");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Mirá el " + animal.getNombre() + " que estoy viendo!");
+        emailIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+    }
 
 }
 
