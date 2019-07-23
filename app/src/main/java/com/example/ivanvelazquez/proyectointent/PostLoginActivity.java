@@ -21,8 +21,8 @@ public class PostLoginActivity extends ButterBind {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_login);
+        super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
         opcion = bundle.getString(EXTRA_MENSAJE);
         usr = bundle.getString(EXTRA_USUARIO);

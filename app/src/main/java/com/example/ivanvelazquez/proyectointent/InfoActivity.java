@@ -67,6 +67,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_info_actiity);
         super.onCreate(savedInstanceState);
         restoreSavedInstance(savedInstanceState);
         Bundle bundle = getIntent().getExtras();

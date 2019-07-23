@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,11 +19,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.ivanvelazquez.proyectointent.R.drawable.globallogic;
+import static com.example.ivanvelazquez.proyectointent.R.drawable.globallogic2;
+import static com.example.ivanvelazquez.proyectointent.R.drawable.logozoo;
+
 
 public class LoginZoo extends ButterBind {
 
     private static final String USRDEF = "GL", PASSDEF = "Android";
     public static final String EXTRA_MENSAJE = "EXTRA_MENSAJE", EXTRA_USUARIO = "EXTRA_USUARIO";
+    @BindView(R.id.imgLogo)
+    ImageView ivLogo;
     @BindView(R.id.rgOpciones)
     RadioGroup rgSexo;
     @BindView(R.id.masculino)
@@ -42,6 +49,7 @@ public class LoginZoo extends ButterBind {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         opcion = (String) getResources().getText(R.string.hi);
+        ivLogo.setImageResource(globallogic2);
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ivanvelazquez.proyectointent.Animal;
+import com.example.ivanvelazquez.proyectointent.ButterBind;
 import com.example.ivanvelazquez.proyectointent.R;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> {
 
@@ -26,6 +28,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
 
     public AdapterDatos(ArrayList<Animal> animales, AnimalListener animalListener) {
+
         this.animales = animales;
         this.animalListener = animalListener;
 
@@ -33,6 +36,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, null, false);
         return new ViewHolder(view);
 
@@ -41,7 +45,6 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.asignarDatos(animales.get(i));
-
     }
 
     @Override
@@ -68,6 +71,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
             imagen.setImageResource(s.getImagen());
             animal = s;
             itemView.setBackgroundColor(s.getColorFondo());
+
 
         }
 
