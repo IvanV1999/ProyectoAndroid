@@ -2,6 +2,6 @@
 <resources>
     <dimen name="login_margin">8dp</dimen>
     <dimen name="margenGral">20dp</dimen>
-    <dimen name="textDimen">24dp</dimen>
-    <dimen name="smalltext">12dp</dimen>
+    <dimen name="textDimen">24sp</dimen>
+    <dimen name="smalltext">12sp</dimen>
 </resources>

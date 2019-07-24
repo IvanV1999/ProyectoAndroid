@@ -3,8 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:ignore="UseCompoundDrawables">
     <ImageView
+        android:contentDescription="@string/descripcionImagen"
         android:src="@drawable/nofavorito"
         android:id="@+id/StarID"
         android:layout_width="wrap_content"

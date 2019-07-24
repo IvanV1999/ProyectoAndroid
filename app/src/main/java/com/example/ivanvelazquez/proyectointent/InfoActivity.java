@@ -74,11 +74,11 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         favoritoView.setClb(this);
 
-        especie.setText(getString(R.string.species) + animal.getEspecie());
+        especie.setText(String.format("%s %s",getString(R.string.species),animal.getEspecie()));
         info.setText(String.format(getString(R.string.description) + animal.getInfo()));
-        horariosTv.setText(getString(R.string.show) + String.format(getResources().getString(R.string.atraccion), animal.getAtraccion().getNombre(), animal.getAtraccion().getHolrario()));
+        horariosTv.setText(String.format("%s %s",getString(R.string.show),String.format(getResources().getString(R.string.atraccion), animal.getAtraccion().getNombre(), animal.getAtraccion().getHolrario())));
         foto.setImageResource(animal.getFoto());
-        nombre.setText(getString(R.string.name) + animal.getNombre());
+        nombre.setText(String.format("%s %s",getString(R.string.name),animal.getNombre()));
         url = animal.getUrl();
         favoritoView.setEstaLikeado(false);
         favoritoView.setAnimal(animal.getNombre());

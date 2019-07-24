@@ -1,9 +1,8 @@
 <resources>
+    <string name="English">English</string>
+    <string name="Spanish">Spanish</string>
     <string name="app_name">IntenProyect</string>
-    <string name="ir_a_la_otra_act">Go to the another Activity</string>
-    <string name="helloWorld">Hello world</string>
     <string name="descripcionImagen">an Image</string>
-    <string name="TextViewDefault">Default Content</string>
     <string name="textUser">User</string>
     <string name="textContraseña">password</string>
     <string name="loguear">Sign in</string>
@@ -13,11 +12,9 @@
     <string name="welcomeSr">Welcome Sr: %s</string>
     <string name="welcomeMiss">Welome Ms: %s</string>
     <string name="hi">Hi: %s</string>
-    <string name="test">Test</string>
     <string name="atraccion">%s %s</string>
     <string name="back">back</string>
     <string name="moreInfo">more info</string>
-    <string name="nombreSelector">Name Default</string>
     <string name="recuest">Favourite</string>
     <string name="recuestGrats">%s added to favourites</string>
     <string name="Settings">Settings</string>

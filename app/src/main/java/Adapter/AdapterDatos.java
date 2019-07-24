@@ -4,6 +4,7 @@ package Adapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, null, false);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, null, false);
         return new ViewHolder(view);
 
     }
@@ -64,7 +65,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
         }
 
         public void asignarDatos(Animal s) {
-            nombre.setText(s.getNombre() + " | " + s.getEspecie());
+            nombre.setText(String.format("%s  |  %s",s.getNombre(),s.getEspecie()));
             imagen.setImageResource(s.getImagen());
             animal = s;
             itemView.setBackgroundColor(s.getColorFondo());

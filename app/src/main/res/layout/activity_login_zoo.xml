@@ -8,10 +8,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".LoginZoo">
+    tools:context=".LoginZoo"
+    tools:ignore="Overdraw">
 
     <ImageView
-        android:id="@+id/imgLogo"
         android:layout_width="241dp"
         android:layout_height="105dp"
         android:layout_gravity="center_horizontal"
@@ -31,7 +31,6 @@
         android:layout_marginTop="@dimen/margenGral"
         android:layout_marginEnd="@dimen/login_margin"
         android:layout_marginRight="@dimen/login_margin"
-        android:autofillHints=""
         android:ems="10"
         android:hint="@string/textUser"
         android:inputType="textPersonName"
@@ -50,7 +49,6 @@
         android:layout_marginRight="@dimen/login_margin"
         android:ems="10"
         android:hint="@string/textContraseña"
-        android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent" />
@@ -90,7 +88,6 @@
         android:layout_marginTop="12dp" />
 
     <Button
-        android:id="@+id/btnLoguearZoo"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
