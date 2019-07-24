@@ -12,6 +12,7 @@
     tools:ignore="Overdraw">
 
     <ImageView
+        android:id="@+id/imgLogo"
         android:layout_width="241dp"
         android:layout_height="105dp"
         android:layout_gravity="center_horizontal"
