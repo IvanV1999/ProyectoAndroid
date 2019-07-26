@@ -1,5 +1,6 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +23,9 @@ public class webActivity extends ButterBind {
     @BindView(R.id.webView)
     WebView web;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_web);
         super.onCreate(savedInstanceState);
         String url = getIntent().getStringExtra(LINK);
         web.getSettings().setLoadsImagesAutomatically(true);
@@ -34,6 +35,11 @@ public class webActivity extends ButterBind {
         web.loadUrl(url);
 
 
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_web;
     }
 
 

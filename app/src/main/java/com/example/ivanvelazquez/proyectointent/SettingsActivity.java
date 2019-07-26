@@ -50,9 +50,7 @@ public class SettingsActivity extends ButterBind {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_settings);
         super.onCreate(savedInstanceState);
-
         settingsTv.setText(R.string.Settings);
         languageTv.setText(R.string.language);
         logOutButton.setText(R.string.logout);
@@ -60,6 +58,11 @@ public class SettingsActivity extends ButterBind {
         backButton.setText(R.string.back);
 
 
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_settings;
     }
 
     @OnClick(R.id.rBEs)

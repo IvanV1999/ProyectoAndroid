@@ -13,9 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@id/flecha">
+        android:layout_toLeftOf="@id/flecha"
+        tools:ignore="RtlHardcoded,UseCompoundDrawables">
 
         <ImageView
+            android:contentDescription="@string/descripcionImagen"
             android:id="@+id/ImgAnimal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,18 +31,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             tools:text="gallina" />
 
     </LinearLayout>
 
     <ImageView
+        android:contentDescription="@string/descripcionImagen"
         android:id="@+id/flecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/arrow" />
+        android:src="@drawable/arrow"
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>

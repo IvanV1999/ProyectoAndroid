@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/arania.png" />
+        <ignore path="src/main/res/drawable/arrow.png" />
+        <ignore path="src/main/res/drawable/cerdo.png" />
+        <ignore path="src/main/res/drawable/dragon.png" />
+        <ignore path="src/main/res/drawable/gallina.png" />
+        <ignore path="src/main/res/drawable/gato.png" />
+        <ignore path="src/main/res/drawable/globallogic2.png" />
+        <ignore path="src/main/res/drawable/panda.png" />
+        <ignore path="src/main/res/drawable/perro.png" />
+        <ignore path="src/main/res/drawable/spider.png" />
+    </issue>
+</lint>

@@ -19,16 +19,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.example.ivanvelazquez.proyectointent.R.drawable.globallogic;
+
 import static com.example.ivanvelazquez.proyectointent.R.drawable.globallogic2;
-import static com.example.ivanvelazquez.proyectointent.R.drawable.logozoo;
 
 
 public class LoginZoo extends ButterBind {
 
     private static final String USRDEF = "GL", PASSDEF = "Android";
     public static final String EXTRA_MENSAJE = "EXTRA_MENSAJE", EXTRA_USUARIO = "EXTRA_USUARIO";
-    @BindView(R.id.imgLogo)
+    @BindView(R.id. imgLogo)
     ImageView ivLogo;
     @BindView(R.id.rgOpciones)
     RadioGroup rgSexo;
@@ -47,10 +46,14 @@ public class LoginZoo extends ButterBind {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_login_zoo);
         super.onCreate(savedInstanceState);
         opcion = (String) getResources().getText(R.string.hi);
         ivLogo.setImageResource(globallogic2);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_login_zoo;
     }
 
     @OnClick({R.id.masculino})

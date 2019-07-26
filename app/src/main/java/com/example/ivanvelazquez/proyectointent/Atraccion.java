@@ -1,5 +1,6 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.Date;
 public class Atraccion implements Serializable {
     private String nombre;
     private Date horario;
+    @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM hh:mm:ss");
 
     public Atraccion(String nombre, String horario){
