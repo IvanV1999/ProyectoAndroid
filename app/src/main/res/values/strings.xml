@@ -27,4 +27,13 @@
     <string name="species">Species: </string>
     <string name="map">Show Localization</string>
     <string name="shareAnimal">Share Animal</string>
+    <string name="TextType">text/plain</string>
+    <string name="AppType">pplication/image</string>
+    <string name="animalApplication">Animal Aplication</string>
+    <string name="lookThisAnimal">Look this animal: </string>
+    <string name="SendInfo">Send info to ... </string>
+    <string name="SendMail">Send mail to...</string>
+    <string name="lookAtTheAnimal">Look at this %s that i\'m seeing!</string>
+    <string name="RequestTitle">Camera and Storage Permissions</string>
+    <string name="RequestDescription">The Permissions are required to take a Pic and share the animal</string>
 </resources>

@@ -1,14 +1,23 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.text.GetChars;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +27,7 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.Format;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -32,6 +42,7 @@ import static com.example.ivanvelazquez.proyectointent.ZooAnimales.EXTRA_ANIMAL;
 public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     public static final String LINK = "link de mayor informacion";
+    public static final int PERMISSION_CAMERA=1;
     private Animal animal;
     @BindView(R.id.tvEspecie)
     TextView especie;
@@ -62,6 +73,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     private Uri photoUri;
     public static final String BACKGROUND = "BACKGROUNDCOLOR";
     public static final String BASEHOUR = "BASEHOUR";
+    private static final String PACKAGE = "package:";
     private static final int REQUEST_CAMERA = 0;
 
 
@@ -88,6 +100,8 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
         regresar.setText(R.string.back);
         masInfo.setText(R.string.moreInfo);
+
+
     }
 
     @Override
@@ -163,16 +177,16 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     @OnClick(R.id.IvShare)
     public void sendinfo() {
         Intent infoIntent = new Intent(Intent.ACTION_SEND);
-        infoIntent.setType("text/plain");
-        infoIntent.putExtra(Intent.EXTRA_SUBJECT, "Aplicacion Animales");
-        infoIntent.putExtra(Intent.EXTRA_TEXT, String.format("Lee la info de este animal:\n\n %s: \n %s", animal.getNombre(), animal.getInfo()));
-        startActivity(Intent.createChooser(infoIntent, "Send info..."));
+        infoIntent.setType(getString(R.string.TextType));
+        infoIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.animalApplication));
+        infoIntent.putExtra(Intent.EXTRA_TEXT, String.format("%s\n\n %s: \n %s",getString(R.string.lookThisAnimal), animal.getNombre(), animal.getInfo()));
+        startActivity(Intent.createChooser(infoIntent, getString(R.string.SendInfo)));
     }
 
 
-    @OnClick(R.id.IvCamera)
+
     public void takePic() {
-        File photo = new File(android.os.Environment.getExternalStorageDirectory(), "Animal.jpg");
+        File photo = new File(android.os.Environment.getExternalStorageDirectory(), String.format("%s.jpg",animal.getNombre()));
         photoUri = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".GenericFileProvider", photo);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -192,14 +206,71 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     }
 
     public void sendMail() {
+
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("application/image");
+        emailIntent.setType(getString(R.string.AppType));
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ivandvelazquez99@gmail.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Aplicacion Animales");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Mirá el " + animal.getNombre() + " que estoy viendo!");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.animalApplication));
+        emailIntent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.lookAtTheAnimal),animal.getNombre()));
         emailIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
-        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.SendMail)));
     }
+
+    @OnClick(R.id.IvCamera)
+    public void requestPermission(){
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.CAMERA)) {
+                    new AlertDialog.Builder(this)
+                            .setTitle(getString(R.string.RequestTitle))
+                            .setMessage(getString(R.string.RequestDescription))
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    intent.setData(Uri.parse(PACKAGE + getPackageName()));
+                                    startActivity(intent);
+
+
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .create().show();
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                        PERMISSION_CAMERA);
+            }
+        } else {
+            takePic();
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        takePic();
+                } else {
+
+                }
+                return;
+            }
+
+        }
+    }
+
 
 }
 
