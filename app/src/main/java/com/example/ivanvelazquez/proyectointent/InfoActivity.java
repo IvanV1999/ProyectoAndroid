@@ -262,10 +262,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                         takePic();
-                } else {
-
                 }
-                return;
             }
 
         }
