@@ -4,4 +4,5 @@
     <dimen name="margenGral">20dp</dimen>
     <dimen name="textDimen">24sp</dimen>
     <dimen name="smalltext">12sp</dimen>
+    <dimen name="smallMargin">5dp</dimen>
 </resources>

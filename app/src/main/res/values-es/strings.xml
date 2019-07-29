@@ -37,4 +37,7 @@
     <string name="lookAtTheAnimal">Mira al %s que estoy viendo!</string>
     <string name="RequestTitle">Permisos de Almacenamiento y Camara</string>
     <string name="RequestDescription">Se necesitan permisos para poder usar la camara y guardar fotos sobre los animales</string>
+    <string name="lowBattery">PRECAUCION BATERIA BAJA, por favor toque la imagen de la bateria para ver puntos de recarga</string>
+    <string name="aviableBays">Puertos Disponibles:</string>
+
 </resources>

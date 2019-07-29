@@ -55,6 +55,7 @@
         <activity android:name=".ZooAnimales" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".webActivity" />
+        <activity android:name=".ChargingPointsActivity" />
     </application>
 
 </manifest>
