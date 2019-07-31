@@ -1,8 +1,6 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class Animal implements Serializable {
     private String nombre;

@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ivanvelazquez.proyectointent.ChargePoint;
-import com.example.ivanvelazquez.proyectointent.ChargingPointsActivity;
 import com.example.ivanvelazquez.proyectointent.R;
 
 import java.util.ArrayList;

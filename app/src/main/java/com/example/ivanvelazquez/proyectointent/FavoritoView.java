@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,10 +27,12 @@ public class FavoritoView extends LinearLayout {
     private String animal;
     private boolean estaLikeado = false;
     public Callback clb;
+    private final int timeAlarm = 30000;
     public static final String SUPERSTATE = "SUPERSTATE";
     public static final String LIKEADO = "LIKEADO";
     public static final int ALARM_REQUEST_CODE = 12;
     public Context context;
+
     public void setClb(Callback clb) {
         this.clb = clb;
     }
@@ -42,9 +42,11 @@ public class FavoritoView extends LinearLayout {
         init(context, null);
 
     }
-    public void setContext(Context context){
+
+    public void setContext(Context context) {
         this.context = context;
     }
+
     public FavoritoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -110,15 +112,19 @@ public class FavoritoView extends LinearLayout {
     }
 
     @OnClick(R.id.StarID)
-    public void asd() {
+    public void favouriteAnimal() {
         favChangeState();
         clb.onClick();
+        setAlarm();
 
+    }
+
+    public void setAlarm() {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
 
-        Intent alarmIntent = new Intent(context,AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,ALARM_REQUEST_CODE,alarmIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 300000 , pendingIntent);
+        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeAlarm, pendingIntent);
 
     }
 
