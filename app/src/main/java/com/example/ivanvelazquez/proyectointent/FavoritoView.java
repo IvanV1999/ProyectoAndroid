@@ -27,7 +27,7 @@ public class FavoritoView extends LinearLayout {
     private String animal;
     private boolean estaLikeado = false;
     public Callback clb;
-    private final int timeAlarm = 30000;
+    private final int timeAlarm = 300000;
     public static final String SUPERSTATE = "SUPERSTATE";
     public static final String LIKEADO = "LIKEADO";
     public static final int ALARM_REQUEST_CODE = 12;
@@ -124,7 +124,9 @@ public class FavoritoView extends LinearLayout {
 
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeAlarm, pendingIntent);
+        if (alarmManager != null) {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeAlarm, pendingIntent);
+        }
 
     }
 

@@ -11,17 +11,15 @@ import android.os.Vibrator;
 public class AlarmReceiver extends BroadcastReceiver {
 
 
-
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-// Vibrate for 500 milliseconds
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            v.vibrate(VibrationEffect.createOneShot(50000, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && v != null) {
+            v.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else if (v != null) {
             //deprecated in API 26
-            v.vibrate(5000);
+            v.vibrate(1000);
         }
 
 
