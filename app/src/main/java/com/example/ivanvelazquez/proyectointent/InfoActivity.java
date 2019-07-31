@@ -127,11 +127,11 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     }
 
     private int randomRGB() {
+        int base = Color.CYAN;
         Random random = new Random();
-        int r = random.nextInt(255);
-        int g = random.nextInt(255);
-        int b = random.nextInt(255);
-
+        int r = (base + random.nextInt(255))/2;
+        int g = (base + random.nextInt(255))/2;
+        int b = (base + random.nextInt(255))/2;
         return Color.rgb(r, g, b);
     }
 
