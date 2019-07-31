@@ -1,6 +1,10 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,9 +16,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.GetChars;
@@ -24,6 +30,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -86,7 +93,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
         info.setMovementMethod(new ScrollingMovementMethod());
         animal = (Animal) bundle.get(EXTRA_ANIMAL);
         favoritoView.setClb(this);
-
+        favoritoView.setContext(getApplicationContext());
         especie.setText(String.format("%s %s",getString(R.string.species),animal.getEspecie()));
         info.setText(String.format(getString(R.string.description) + animal.getInfo()));
         horariosTv.setText(String.format("%s %s",getString(R.string.show),String.format(getResources().getString(R.string.atraccion), animal.getAtraccion().getNombre(), animal.getAtraccion().getHolrario())));
@@ -247,7 +254,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
                             .create().show();
             } else {
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                        new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.VIBRATE },
                         PERMISSION_CAMERA);
             }
         } else {
