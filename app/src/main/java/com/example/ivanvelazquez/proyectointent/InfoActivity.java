@@ -240,7 +240,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
                             .create().show();
             } else {
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.VIBRATE },
+                        new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         PERMISSION_CAMERA);
             }
         } else {

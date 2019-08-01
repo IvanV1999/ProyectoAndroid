@@ -23,9 +23,10 @@ public class AdapterCards extends RecyclerView.Adapter<AdapterCards.ViewHolder> 
 
     ArrayList<ChargePoint> chargePoints;
     private final Callback clb;
+    private final int STANDAR_CUANTITY_CARDS = 4;
 
-    public AdapterCards(ArrayList<ChargePoint> chargePoints,Callback clb) {
-        this.chargePoints=chargePoints;
+    public AdapterCards(ArrayList<ChargePoint> chargePoints, Callback clb) {
+        this.chargePoints = chargePoints;
         this.clb = clb;
     }
 
@@ -58,20 +59,21 @@ public class AdapterCards extends RecyclerView.Adapter<AdapterCards.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void assingData(ChargePoint ch) {
-            tvBays.setText(String.format("%s    %s",clb.getContextForAssing().getString(R.string.aviableBays), ch.getBays()));
+            tvBays.setText(String.format("%s    %s", clb.getContextForAssing().getString(R.string.aviableBays), ch.getBays()));
             tvBayDescription.setText(ch.getDescription());
-            if (ch.getBays() <= 4) {
+            if (ch.getBays() <= STANDAR_CUANTITY_CARDS) {
                 ivBatterycard.setImageResource(R.drawable.lowbattery);
             } else {
                 ivBatterycard.setImageResource(R.drawable.chargedbattery);
             }
         }
     }
-    public interface Callback{
+
+    public interface Callback {
         Context getContextForAssing();
     }
 }
