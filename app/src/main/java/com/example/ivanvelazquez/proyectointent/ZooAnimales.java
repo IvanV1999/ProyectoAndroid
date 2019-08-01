@@ -1,15 +1,18 @@
 package com.example.ivanvelazquez.proyectointent;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -30,6 +33,8 @@ public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListen
     @BindView(R.id.tvZooMaps) TextView tvZooMaps;
     @BindView(R.id.tvZooSettings)TextView tvZooSettings;
     @BindView(R.id.map)ImageView map;
+    @BindView(R.id.tvBattery)TextView tvBattery;
+    @BindView(R.id.ivBattery)ImageView ivBattery;
     private ArrayList<Animal> animales = new ArrayList<Animal>();
     private String opcion;
     private String usr;
@@ -49,7 +54,9 @@ public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListen
         tvZooMaps.setText(R.string.map);
         tvZooSettings.setText(R.string.Settings);
 
-
+        BatteryBroadcastReceiver receiver = new BatteryBroadcastReceiver();
+        registerReceiver(receiver, new IntentFilter(Intent.ACTION_BATTERY_LOW));
+        registerReceiver(receiver, new IntentFilter(Intent.ACTION_BATTERY_OKAY));
     }
 
     @Override
@@ -138,10 +145,11 @@ public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListen
     }
 
     private int randomColour() {
+        int base = Color.CYAN;
         Random random = new Random();
-        int r = random.nextInt(255);
-        int g = random.nextInt(255);
-        int b = random.nextInt(255);
+        int r = (base + random.nextInt(255))/2;
+        int g = (base + random.nextInt(255))/2;
+        int b = (base + random.nextInt(255))/2;
         return Color.rgb(r, g, b);
 
 
@@ -150,8 +158,25 @@ public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListen
         Intent settingsAct = new Intent(this, SettingsActivity.class);
         startActivity(settingsAct);
     }
+    @OnClick(R.id.ivBattery)
+    public void chargingPointIntent(){
+        Intent chargingPointIntent = new Intent(this,ChargingPointsActivity.class);
+        startActivity(chargingPointIntent);
+    }
 
-
+    private class BatteryBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction() == Intent.ACTION_BATTERY_LOW){
+                tvBattery.setText(getString(R.string.lowBattery));
+                ivBattery.setImageResource(R.drawable.lowbattery);
+            }
+            if(intent.getAction() == Intent.ACTION_BATTERY_OKAY){
+                tvBattery.setText(null);
+                ivBattery.setImageResource(0);
+            }
+        }
+    }
 }
 
 

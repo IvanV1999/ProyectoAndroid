@@ -36,4 +36,6 @@
     <string name="lookAtTheAnimal">Look at this %s that i\'m seeing!</string>
     <string name="RequestTitle">Camera and Storage Permissions</string>
     <string name="RequestDescription">The Permissions are required to take a Pic and share the animal</string>
+    <string name="lowBattery">WARNING LOW BATTERY, please touch the battery image to see charging points</string>
+    <string name="aviableBays">Aviable bays:</string>
 </resources>
