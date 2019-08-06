@@ -214,7 +214,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType(getString(R.string.AppType));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ivandvelazquez99@gmail.com"});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.animalApplication));
         emailIntent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.lookAtTheAnimal), animal.getNombre()));
         emailIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
