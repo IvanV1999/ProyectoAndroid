@@ -7,12 +7,13 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Atraccion implements Serializable {
     private String nombre;
     private Date horario;
     @SuppressLint("SimpleDateFormat")
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM hh:mm:ss");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss", Locale.US);
 
     public Atraccion(String nombre, String horario){
         this.nombre = nombre;
@@ -42,5 +43,8 @@ public class Atraccion implements Serializable {
 
     public void actualizarHorario(String nuevoHorario){
             setHolrario(nuevoHorario);
+    }
+    public Date getDate(){
+        return this.horario;
     }
 }

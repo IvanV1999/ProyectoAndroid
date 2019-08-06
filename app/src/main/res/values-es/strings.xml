@@ -39,5 +39,10 @@
     <string name="RequestDescription">Se necesitan permisos para poder usar la camara y guardar fotos sobre los animales</string>
     <string name="lowBattery">PRECAUCION BATERIA BAJA, por favor toque la imagen de la bateria para ver puntos de recarga</string>
     <string name="aviableBays">Puertos Disponibles:</string>
-
+    <string name="alredyadded">Este evento ya ha sido añadido</string>
+    <string name="eventadded">Evento añadido al calendario</string>
+    <string name="zooshow">Show en la reserva de animales</string>
+    <string name="timezone">America/Argentina/Buenos_Aires</string>
+    <string name="logevent">evento creado, el id es: </string>
+    <string name="logcalendar">Calendario ID: %s    Nombre de pantalla: %s  Nombre de la cuenta: %s  Nombre del organizador: %s</string>
 </resources>

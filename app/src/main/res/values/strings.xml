@@ -38,4 +38,10 @@
     <string name="RequestDescription">The Permissions are required to take a Pic and share the animal</string>
     <string name="lowBattery">WARNING LOW BATTERY, please touch the battery image to see charging points</string>
     <string name="aviableBays">Aviable bays:</string>
+    <string name="alredyadded">this even has alredy been added in the calendar</string>
+    <string name="eventadded">Event added in the calendar</string>
+    <string name="zooshow">Show in the Animal Reserve </string>
+    <string name="timezone">America/Los_Angeles</string>
+    <string name="logevent">event Created, the event id is:</string>
+    <string name="logcalendar">Calendar ID: %s    Display Name: %s  Account Name: %s  Owner Name: %s</string>
 </resources>

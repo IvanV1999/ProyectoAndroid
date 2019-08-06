@@ -20,8 +20,8 @@
             android:id="@+id/ivFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:src="@drawable/gallinagrande"
-            android:contentDescription="@string/descripcionImagen" />
+            android:contentDescription="@string/descripcionImagen"
+            tools:src="@drawable/gallinagrande" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,22 +34,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:text="nombre"
-                android:layout_marginLeft="12dp" />
+                tools:text="nombre" />
 
             <TextView
                 android:id="@+id/tvEspecie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
                 android:textStyle="italic"
-                tools:text="naskonaskonkoasnfa"
-                android:layout_marginLeft="12dp" />
+                tools:text="naskonaskonkoasnfa" />
 
             <com.example.ivanvelazquez.proyectointent.FavoritoView
                 android:id="@+id/idFavourite"
@@ -66,14 +66,15 @@
                     android:id="@+id/IvCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/camera"
-                    android:contentDescription="@string/descripcionImagen" />
+                    android:contentDescription="@string/descripcionImagen"
+                    android:src="@drawable/camera" />
+
                 <ImageView
                     android:id="@+id/IvShare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/share"
-                    android:contentDescription="@string/descripcionImagen" />
+                    android:contentDescription="@string/descripcionImagen"
+                    android:src="@drawable/share" />
 
                 <TextView
                     android:id="@+id/tvShare"
@@ -84,6 +85,17 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TvHorarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.cardview.widget.CardView>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -105,10 +117,6 @@
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
 
-            <TextView
-                android:id="@+id/TvHorarios"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
