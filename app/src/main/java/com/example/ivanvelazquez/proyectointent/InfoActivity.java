@@ -1,6 +1,7 @@
 package com.example.ivanvelazquez.proyectointent;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -17,7 +18,6 @@ import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,11 +29,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.Format;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Random;
@@ -80,7 +76,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     private static final String PACKAGE = "package:";
     private static final int REQUEST_CAMERA = 0;
     private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 30;
-
+    private static final int ERROR_NO_CALENDAR = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,7 +228,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
                 new AlertDialog.Builder(this)
                         .setTitle(getString(R.string.RequestTitle))
                         .setMessage(getString(R.string.RequestDescription))
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -242,7 +238,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
@@ -283,13 +279,9 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
         long startMillis = 0;
         long endMillis = 0;
-        Calendar beginTime = Calendar.getInstance();
-        beginTime.setTime(this.animal.getAtraccion().getDate());
-        startMillis = beginTime.getTimeInMillis();
-        Calendar endTime = Calendar.getInstance();
-        endTime.setTime(this.animal.getAtraccion().getDate());
-        endTime.add(Calendar.HOUR, 1);
-        endMillis = endTime.getTimeInMillis();
+
+        startMillis = setTimeDate();
+        endMillis = setTimeDate(1);
 
         // The ID of the recurring event whose instances you are searching for in the Instances table
         String selection = CalendarContract.Instances.TITLE + " = ?";
@@ -309,21 +301,24 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     public void addCalendarEvent() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR, Manifest.permission.READ_CALENDAR}, MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
+            return;
         }
 
         if (isEventAlreadyExist(this.animal.getAtraccion().getNombre())) {
             Toast.makeText(this, R.string.alredyadded, Toast.LENGTH_SHORT).show();
         } else {
             long calID = getPrimaryCalendar();
+
+            if (calID == ERROR_NO_CALENDAR) {
+                Toast.makeText(this, R.string.nocalendarfound, Toast.LENGTH_SHORT).show();
+                return;
+            }
             long startMillis = 0;
             long endMillis = 0;
-            Calendar beginTime = Calendar.getInstance();
-            beginTime.setTime(this.animal.getAtraccion().getDate());
-            startMillis = beginTime.getTimeInMillis();
-            Calendar endTime = Calendar.getInstance();
-            endTime.setTime(this.animal.getAtraccion().getDate());
-            endTime.add(Calendar.HOUR, 1);
-            endMillis = endTime.getTimeInMillis();
+
+            startMillis = setTimeDate();
+            endMillis = setTimeDate(1);
+
 
             ContentResolver cr = getContentResolver();
             ContentValues values = new ContentValues();
@@ -336,7 +331,7 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
             Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
             long eventID = Long.parseLong(uri.getLastPathSegment());
-            Log.i("Calendar", String.format("%s %s",R.string.logevent,eventID));
+            Log.i("Calendar", String.format("%s %s", R.string.logevent, eventID));
             Toast.makeText(this, R.string.eventadded, Toast.LENGTH_SHORT).show();
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR, Manifest.permission.READ_CALENDAR}, MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
@@ -346,11 +341,8 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     }
 
+    @SuppressLint("MissingPermission")
     public long getPrimaryCalendar() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR}, MY_PERMISSIONS_REQUEST_WRITE_CALENDAR);
-            return 0;
-        }
 
         //crea indices en vez de hacerlos dinamicamente, para mas performance
         final String[] EVENT_PROJECTION = new String[]{
@@ -385,7 +377,20 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
             return calID;
         }
 
-        return 99;
+        return ERROR_NO_CALENDAR;
+    }
+
+    public long setTimeDate() {
+        Calendar calendarTime = Calendar.getInstance();
+        calendarTime.setTime(this.animal.getAtraccion().getDate());
+        return calendarTime.getTimeInMillis();
+    }
+
+    public long setTimeDate(int plusHour) {
+        Calendar calendarTime = Calendar.getInstance();
+        calendarTime.setTime(this.animal.getAtraccion().getDate());
+        calendarTime.add(Calendar.HOUR, plusHour);
+        return calendarTime.getTimeInMillis();
     }
 
 }

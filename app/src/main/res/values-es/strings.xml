@@ -45,4 +45,7 @@
     <string name="timezone">America/Argentina/Buenos_Aires</string>
     <string name="logevent">evento creado, el id es: </string>
     <string name="logcalendar">Calendario ID: %s    Nombre de pantalla: %s  Nombre de la cuenta: %s  Nombre del organizador: %s</string>
+    <string name="yes">si</string>
+    <string name="no">no</string>
+    <string name="nocalendarfound">no se encontró calendario</string>
 </resources>

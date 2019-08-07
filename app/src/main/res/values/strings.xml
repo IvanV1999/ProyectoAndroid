@@ -44,4 +44,7 @@
     <string name="timezone">America/Los_Angeles</string>
     <string name="logevent">event Created, the event id is:</string>
     <string name="logcalendar">Calendar ID: %s    Display Name: %s  Account Name: %s  Owner Name: %s</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="nocalendarfound">No calendar Found</string>
 </resources>
