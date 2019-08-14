@@ -9,6 +9,10 @@
     android:orientation="vertical"
     tools:context=".InfoActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"></include>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -69,12 +73,6 @@
                     android:contentDescription="@string/descripcionImagen"
                     android:src="@drawable/camera" />
 
-                <ImageView
-                    android:id="@+id/IvShare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/descripcionImagen"
-                    android:src="@drawable/share" />
 
                 <TextView
                     android:id="@+id/tvShare"
@@ -87,9 +85,9 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/TvHorarios"

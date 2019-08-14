@@ -48,4 +48,16 @@
     <string name="yes">si</string>
     <string name="no">no</string>
     <string name="nocalendarfound">no se encontró calendario</string>
+    <string name="zoo">zoo</string>
+    <string name="zooinfo">zoo - informacion animal</string>
+    <string name="zooSettings">zoo - ajustes</string>
+    <string name="zooChargePoint">zoo - Puntos de recarga</string>
+    <string name="delete">Eliminar</string>
+    <string name="sharingAnimal">Compartiendo animal</string>
+    <string name="deletedAnimal">Deleting Animal</string>
+    <string name="zooinfogoback">zooinfogoback</string>
+    <string name="confirmMail">De ser afirmativo por favor introduzca mail abajo</string>
+    <string name="wantToMail">Desea enviar la informacion por mail?</string>
+    <string name="examplemail">example@example.com</string>
+    <string name="pleaseentervalidmail">please enter a valid mail</string>
 </resources>

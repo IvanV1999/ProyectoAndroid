@@ -6,7 +6,9 @@
     android:orientation="vertical"
     tools:context=".ZooAnimales">
 
-
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"></include>
     <TextView
         android:id="@+id/tvBienvenido"
         android:layout_width="match_parent"

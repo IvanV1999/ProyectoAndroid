@@ -14,6 +14,8 @@ public abstract class ButterBind extends AppCompatActivity {
         ButterKnife.bind(this);
 
     }
+
+
     protected abstract int getContentView();
 
 }
