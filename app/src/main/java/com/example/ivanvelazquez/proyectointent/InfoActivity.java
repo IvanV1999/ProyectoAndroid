@@ -12,18 +12,24 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -33,6 +39,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -64,8 +72,8 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     TextView tvCamera;
     @BindView(R.id.IvCamera)
     ImageView ivCamera;
-    @BindView(R.id.IvShare)
-    ImageView ivShare;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private String idioma = Locale.getDefault().toString();
     private String url;
     public int baseHour = 0;
@@ -102,8 +110,29 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
         regresar.setText(R.string.back);
         masInfo.setText(R.string.moreInfo);
 
-
+        setSupportActionBar(toolbar);
+        setTitle(getString(R.string.zooinfo));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.infoactivitytoolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.zoogoback:
+                finish();
+                break;
+            case R.id.itemshare:
+                sendinfo();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected int getContentView() {
@@ -175,7 +204,6 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     }
 
 
-    @OnClick(R.id.IvShare)
     public void sendinfo() {
         Intent infoIntent = new Intent(Intent.ACTION_SEND);
         infoIntent.setType(getString(R.string.TextType));
@@ -186,7 +214,8 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
 
     public void takePic() {
-        File photo = new File(android.os.Environment.getExternalStorageDirectory(), String.format("%s.jpg", animal.getNombre()));
+        File photo = new File(Environment.getExternalStorageDirectory(), String.format("%s.jpg", animal.getNombre()));
+
         photoUri = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".GenericFileProvider", photo);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -197,22 +226,45 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            sendMail();
-            photoUri = null;
+            mailDialog();
+
+
         } else {
             Log.d("InfoActivity", "Camera error");
         }
 
     }
 
-    public void sendMail() {
+    private void mailDialog() {
+        EditText mail = new EditText(this);
+        mail.setHint(R.string.examplemail);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.confirmMail))
+                .setTitle(getString(R.string.wantToMail))
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        sendMail(mail.getText().toString());
 
+                    }
+                })
+                .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                })
+                .setView(mail);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public void sendMail(String mail) {
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType(getString(R.string.AppType));
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{mail});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.animalApplication));
         emailIntent.putExtra(Intent.EXTRA_TEXT, String.format(getString(R.string.lookAtTheAnimal), animal.getNombre()));
+        Log.i("PHOTO URI", photoUri.toString());
         emailIntent.putExtra(Intent.EXTRA_STREAM, photoUri);
         startActivity(Intent.createChooser(emailIntent, getString(R.string.SendMail)));
     }
@@ -394,6 +446,3 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     }
 
 }
-
-
-

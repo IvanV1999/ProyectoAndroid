@@ -44,7 +44,20 @@
     <string name="timezone">America/Los_Angeles</string>
     <string name="logevent">event Created, the event id is:</string>
     <string name="logcalendar">Calendar ID: %s    Display Name: %s  Account Name: %s  Owner Name: %s</string>
-    <string name="yes">yes</string>
+    <string name="yes">yes</string>  
     <string name="no">no</string>
     <string name="nocalendarfound">No calendar Found</string>
+    <string name="zoo">zoo - animals</string>
+    <string name="zooinfo">zoo - animal information</string>
+    <string name="zooSettings">zoo - settings</string>
+    <string name="zooChargePoint">zoo - Charge Points</string>
+    <string name="delete">Delete</string>
+    <string name="sharingAnimal">Compartiendo animal</string>
+    <string name="deletedAnimal">Deleting Animal</string>
+    <string name="zooinfogoback">zooinfogoback</string>
+    <string name="confirmMail">if its affirmative, please enter an email</string>
+    <string name="wantToMail">Do you want to send an Email?</string>
+    <string name="examplemail">example@example.com</string>
+    <string name="pleaseentervalidmail">please enter a valid mail</string>
 </resources>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:title="@string/shareAnimal"
+            android:id="@+id/itemshare"
+            android:icon="@drawable/share"
+            app:showAsAction="always"></item>
+        <item
+            android:id="@+id/zooiconid"
+            android:icon="@drawable/zoo32"
+            app:showAsAction="always"
+            android:title="@string/zooinfo"></item>
+        <item
+            android:id="@+id/zoogoback"
+            android:icon="@drawable/back"
+            app:showAsAction="always"
+            android:title="@string/zooinfogoback"></item>
+
+</menu>

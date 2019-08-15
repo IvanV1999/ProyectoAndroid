@@ -5,11 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Locale;
 
@@ -21,27 +26,22 @@ public class SettingsActivity extends ButterBind {
 
     @BindView(R.id.applyButton)
     Button applyButton;
-
     @BindView(R.id.backButton)
     Button backButton;
-
     @BindView(R.id.logOutButton)
     Button logOutButton;
-
     @BindView(R.id.tVLanguages)
     TextView languageTv;
-
     @BindView(R.id.rBLanguages)
     RadioGroup languageRb;
-
     @BindView(R.id.rBEs)
     RadioButton esRb;
-
     @BindView(R.id.rBEn)
     RadioButton enRb;
-
     @BindView(R.id.TvSettings)
     TextView settingsTv;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private String idioma;
 
     @Override
@@ -53,7 +53,24 @@ public class SettingsActivity extends ButterBind {
         applyButton.setText(R.string.apply);
         backButton.setText(R.string.back);
 
+        setSupportActionBar(toolbar);
+        setTitle(getString(R.string.zooSettings));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settingstoolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case(R.id.zoogoback):
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
