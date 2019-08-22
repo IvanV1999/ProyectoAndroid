@@ -60,4 +60,6 @@
     <string name="wantToMail">Desea enviar la informacion por mail?</string>
     <string name="examplemail">example@example.com</string>
     <string name="pleaseentervalidmail">please enter a valid mail</string>
+    <string name="showStart">El programa de %s esta por empezar</string>
+    <string name="lookbeautiful">mira este hermoso animal</string>
 </resources>

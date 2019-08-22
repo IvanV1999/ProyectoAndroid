@@ -59,5 +59,7 @@
     <string name="wantToMail">Do you want to send an Email?</string>
     <string name="examplemail">example@example.com</string>
     <string name="pleaseentervalidmail">please enter a valid mail</string>
+    <string name="showStart">the view of %s it is about to begin</string>
+    <string name="lookbeautiful">look at this beautiful animal</string>
 </resources>
 

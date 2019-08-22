@@ -39,8 +39,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -112,6 +110,13 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
 
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.zooinfo));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
@@ -197,10 +202,10 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     }
 
     @Override
-    public void onClick() {
+    public Animal onClick() {
         backgroundColor = randomRGB();
         setActivityBackgroundColor(backgroundColor);
-
+        return  animal;
     }
 
 

@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,12 +28,14 @@ public class FavoritoView extends LinearLayout {
     ImageView star;
     @BindView(R.id.tvFavorito)
     TextView fav;
+    private Animal callbackAnimal;
     private String animal;
     private boolean estaLikeado = false;
     public Callback clb;
-    private final int timeAlarm = 300000;
+    private final int timeAlarm = 2000;
     public static final String SUPERSTATE = "SUPERSTATE";
     public static final String LIKEADO = "LIKEADO";
+    public static final String EXTRA_BUNDLE= "EXTRA_BUNDLE";
     public static final int ALARM_REQUEST_CODE = 12;
     public Context context;
 
@@ -108,25 +114,40 @@ public class FavoritoView extends LinearLayout {
     }
 
     public interface Callback {
-        void onClick();
+        Animal onClick();
     }
 
     @OnClick(R.id.StarID)
     public void favouriteAnimal() {
         favChangeState();
-        clb.onClick();
-        setAlarm();
+        callbackAnimal = clb.onClick();
+        setAlarm(callbackAnimal);
 
     }
 
-    public void setAlarm() {
+    public void setAlarm(Animal animal) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
 
+
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //Bundle bundle = new Bundle();
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_ATRACCION, animal.getAtraccion());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_INFO, animal.getInfo());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_NOMBRE, animal.getNombre());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_URL, animal.getUrl());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_COLOR_FONDO, animal.getColorFondo());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_ESPECIE, animal.getEspecie());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_FOTO, animal.getFoto());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_IMAGEN, animal.getImagen());
+
+        //alarmIntent.putExtras(bundle);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
         if (alarmManager != null) {
             alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + timeAlarm, pendingIntent);
         }
+
 
     }
 

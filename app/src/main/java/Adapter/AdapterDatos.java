@@ -32,6 +32,7 @@ public class AdapterDatos extends RecyclerView.Adapter<AdapterDatos.ViewHolder> 
         notifyItemRemoved(position);
     }
 
+
     public AdapterDatos(ArrayList<Animal> animales, AnimalListener animalListener) {
         this.animales = animales;
         this.animalListener = animalListener;
