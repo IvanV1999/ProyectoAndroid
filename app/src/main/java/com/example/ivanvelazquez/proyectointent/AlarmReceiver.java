@@ -38,6 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Animal a = createAnimal(intent);
 
+
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && v != null) {
             v.vibrate(VibrationEffect.createOneShot(miliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
@@ -51,15 +52,15 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     private Animal createAnimal(Intent intent) {
 
-        //Bundle asd = intent.getExtras();
-        String nombre = intent.getStringExtra(EXTRA_NOMBRE);
-        String info = intent.getStringExtra(EXTRA_INFO);
-        String especie = intent.getStringExtra(EXTRA_ESPECIE);
-        Atraccion atraccion = (Atraccion) intent.getSerializableExtra(EXTRA_ATRACCION);
-        int colorFondo = intent.getIntExtra(EXTRA_COLOR_FONDO, 0);
-        int foto = intent.getIntExtra(EXTRA_FOTO, 0);
-        int imagen = intent.getIntExtra(EXTRA_IMAGEN, 0);
-        String url = intent.getStringExtra(EXTRA_URL);
+        Bundle asd = intent.getExtras();
+        String nombre = asd.getString(EXTRA_NOMBRE);
+        String info = asd.getString(EXTRA_INFO);
+        String especie = asd.getString(EXTRA_ESPECIE);
+        Atraccion atraccion = (Atraccion) asd.getSerializable(EXTRA_ATRACCION);
+        int colorFondo = asd.getInt(EXTRA_COLOR_FONDO);
+        int foto = asd.getInt(EXTRA_FOTO);
+        int imagen = asd.getInt(EXTRA_IMAGEN);
+        String url = asd.getString(EXTRA_URL);
 
         return new Animal(nombre, foto, especie, info, imagen, colorFondo, url, atraccion);
 
@@ -68,7 +69,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void buildNotif(Context context, Animal animal) {
         int mNotificationId = 1;
         Intent animalIntent = new Intent(context, InfoActivity.class);
-        //agregar el extra de animal
         animalIntent.putExtra("EXTRA_ANIMAL", animal);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 1568, animalIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
