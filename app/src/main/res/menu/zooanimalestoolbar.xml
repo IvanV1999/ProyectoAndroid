@@ -6,9 +6,4 @@
         android:icon="@drawable/zoo32"
         app:showAsAction="always"
         android:title="@string/zooinfo"></item>
-    <item
-        android:id="@+id/zoogoback"
-        android:icon="@drawable/back"
-        app:showAsAction="always"
-        android:title="@string/zooinfogoback"></item>
 </menu>

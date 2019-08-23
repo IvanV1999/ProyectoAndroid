@@ -112,12 +112,14 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
         setTitle(getString(R.string.zooinfo));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,9 +130,6 @@ public class InfoActivity extends ButterBind implements FavoritoView.Callback {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.zoogoback:
-                finish();
-                break;
             case R.id.itemshare:
                 sendinfo();
                 break;

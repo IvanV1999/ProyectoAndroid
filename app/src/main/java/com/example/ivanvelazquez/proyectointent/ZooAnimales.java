@@ -79,15 +79,18 @@ public class ZooAnimales extends ButterBind implements AdapterDatos.AnimalListen
 
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.zoo));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.zoogoback:
-                finish();
-                break;
-        }
         return super.onOptionsItemSelected(item);
     }
 

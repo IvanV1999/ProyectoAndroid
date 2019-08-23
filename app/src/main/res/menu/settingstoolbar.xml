@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/zoogoback"
-        android:title="@string/back"
-        android:icon="@drawable/back"
-        app:showAsAction="always"></item>
+        android:id="@+id/zooiconid"
+        android:icon="@drawable/zoo32"
+        app:showAsAction="always"
+        android:title="@string/zooinfo"></item>
 </menu>

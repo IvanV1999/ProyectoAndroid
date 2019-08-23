@@ -30,6 +30,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public static final String EXTRA_URL = "EXTRA_URL";
 
     private final int miliseconds = 1000;
+    private final int requestCode = 1568;
     private final String channelId = "notificationChannel";
 
 
@@ -72,7 +73,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Intent animalIntent = new Intent(context, InfoActivity.class);
         animalIntent.putExtra("EXTRA_ANIMAL", animal);
         animalIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 1568, animalIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(context, requestCode, animalIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         NotificationCompat.Builder builder =
