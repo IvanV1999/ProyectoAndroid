@@ -19,8 +19,8 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
-
-    public static final String EXTRA_ATRACCION = "EXTRA_ATRACCION";
+    public static final String EXTRA_NOMBRE_ATRACCION="EXTRA_NOMBRE_ATRACCION";
+    public static final String EXTRA_HORARIO_ATRACCION="EXTRA_HORARIO_ATRACCION";
     public static final String EXTRA_COLOR_FONDO = "EXTRA_COLOR_FONDO";
     public static final String EXTRA_ESPECIE = "EXTRA_ESPECIE";
     public static final String EXTRA_FOTO = "EXTRA_FOTO";
@@ -52,17 +52,18 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     private Animal createAnimal(Intent intent) {
 
-        Bundle asd = intent.getExtras();
-        String nombre = asd.getString(EXTRA_NOMBRE);
-        String info = asd.getString(EXTRA_INFO);
-        String especie = asd.getString(EXTRA_ESPECIE);
-        Atraccion atraccion = (Atraccion) asd.getSerializable(EXTRA_ATRACCION);
-        int colorFondo = asd.getInt(EXTRA_COLOR_FONDO);
-        int foto = asd.getInt(EXTRA_FOTO);
-        int imagen = asd.getInt(EXTRA_IMAGEN);
-        String url = asd.getString(EXTRA_URL);
 
-        return new Animal(nombre, foto, especie, info, imagen, colorFondo, url, atraccion);
+        String nombre = intent.getStringExtra(EXTRA_NOMBRE);
+        String info = intent.getStringExtra(EXTRA_INFO);
+        String especie = intent.getStringExtra(EXTRA_ESPECIE);
+        int colorFondo = intent.getIntExtra(EXTRA_COLOR_FONDO,0);
+        int foto = intent.getIntExtra(EXTRA_FOTO,0);
+        int imagen = intent.getIntExtra(EXTRA_IMAGEN,0);
+        String url = intent.getStringExtra(EXTRA_URL);
+        String atractionName = intent.getStringExtra(EXTRA_NOMBRE_ATRACCION);
+        String atractionTime = intent.getStringExtra(EXTRA_HORARIO_ATRACCION);
+        Atraccion atraction = new Atraccion(atractionName,atractionTime);
+        return new Animal(nombre, foto, especie, info, imagen, colorFondo, url, atraction);
 
     }
 
@@ -70,6 +71,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         int mNotificationId = 1;
         Intent animalIntent = new Intent(context, InfoActivity.class);
         animalIntent.putExtra("EXTRA_ANIMAL", animal);
+        animalIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 1568, animalIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 

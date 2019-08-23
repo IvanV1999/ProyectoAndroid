@@ -131,17 +131,19 @@ public class FavoritoView extends LinearLayout {
 
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(AlarmReceiver.EXTRA_ATRACCION, animal.getAtraccion());
-        bundle.putString(AlarmReceiver.EXTRA_INFO, animal.getInfo());
-        bundle.putString(AlarmReceiver.EXTRA_NOMBRE, animal.getNombre());
-        bundle.putString(AlarmReceiver.EXTRA_URL, animal.getUrl());
-        bundle.putInt(AlarmReceiver.EXTRA_COLOR_FONDO, animal.getColorFondo());
-        bundle.putString(AlarmReceiver.EXTRA_ESPECIE, animal.getEspecie());
-        bundle.putInt(AlarmReceiver.EXTRA_FOTO, animal.getFoto());
-        bundle.putInt(AlarmReceiver.EXTRA_IMAGEN, animal.getImagen());
 
-        alarmIntent.putExtras(bundle);
+
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_NOMBRE_ATRACCION, animal.getAtraccion().getNombre());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_HORARIO_ATRACCION, animal.getAtraccion().getHolrario());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_INFO, animal.getInfo());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_NOMBRE, animal.getNombre());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_URL, animal.getUrl());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_COLOR_FONDO, animal.getColorFondo());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_ESPECIE, animal.getEspecie());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_FOTO, animal.getFoto());
+        alarmIntent.putExtra(AlarmReceiver.EXTRA_IMAGEN, animal.getFoto());
+
+        alarmIntent.putExtras(alarmIntent);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager != null) {
