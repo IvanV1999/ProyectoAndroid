@@ -55,6 +55,14 @@ public class SettingsActivity extends ButterBind {
 
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.zooSettings));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -65,11 +73,6 @@ public class SettingsActivity extends ButterBind {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case(R.id.zoogoback):
-                finish();
-                break;
-        }
         return super.onOptionsItemSelected(item);
     }
 
